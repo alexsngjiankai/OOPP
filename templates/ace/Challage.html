@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="{{ url_for("static" , filename="style.css")}}">
+
+<body id="Ace_body">
+<h1>Setting Challage</h1>
+
+
+
+<form method="post">
+
+    <label>Starting range
+    <input type="number" id="Ace_Start" name="Start" min="1" max="25" value="{{ request.form['Start'] }}" required>
+    </label>
+    <br>
+    <label>Ending Range
+    <input type="number" id="Ace_End" name="End" min="26" max="999" value="{{ request.form['End'] }}" required>
+    </label>
+        <br>
+
+    <label>Amount of Question
+    <input type="number" id="Ace_Range" name="Range" min="5" max="100" value="{{ request.form['Range'] }}" required>
+    </label>
+    <br>
+    <label>Countdown time in seconds
+    <input type="number" id="Ace_Time" name="Time" min="10" max="300" value="{{ request.form['Time'] }}"  required>
+    </label>
+    <br>
+
+    <input type="submit" value="Start">
+    </form>
+
+</body>
+<!--
+<table>
+    <tr><td></td><td></td></tr>
+    <tr><td></td><td></td></tr>
+
+    <tr><td></td><td></td></tr>
+    <tr></tr>
+    <tr></tr>
+    <tr><td></td><td></td><td></td></tr>
+    </table>
+
+    -->
+
+

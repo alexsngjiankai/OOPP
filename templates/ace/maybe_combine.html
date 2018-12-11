@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<link rel="stylesheet" type="text/css" href="{{ url_for("static" , filename="style.css")}}">
+
+<body id="Ace_body">
+<div id="Ace_Results">
+<h1 >Results</h1>
+
+
+
+{% for i in tomtom %}
+    {% if i['U']!=0 %}
+   <h1 id="Ace_QSpam">{{ i['EQ1'] }} {{i['S'] }} {{ i['EQ2'] }}={{ i['U'] }}  ans:{{ i['A'] }}
+
+
+       {% if i["C"]=="Incorrect" %}
+       <h1 id="Ace_Incorrect">{{ i['C'] }}</h1>
+        {% else %}
+           <h1 id="Ace_Correct">{{ i['C'] }}</h1>
+       {% endif %}
+
+
+
+
+   </h1>
+    {% endif %}
+{% endfor %}
+
+<button class="Ace_Make_IT_Hover"><a id="Ace_ChangeSize_InCalGameStart" href="{{ url_for('goToGameSelection') }}">Back to game select</a></button>
+
+</div>
+</body>

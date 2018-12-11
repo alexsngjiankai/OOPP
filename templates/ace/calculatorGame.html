@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="{{ url_for("static" , filename="style.css")}}">
+<br>
+<br><br>
+<br>
+<body>
+ <div id="Ace_selector">
+     <br>
+<br>
+     <br>
+<br>
+          <br>
+<br>
+     <ul id="Ace_chooseDiffcuty">
+         <li><a id="Ace_CalEasy" href="{{ url_for('chooseEasy') }}">Easy</a></li>
+         <li><a id="Ace_CalNormal" href="{{ url_for('chooseNormal') }}">Normal</a></li>
+         <li><a id="Ace_CalHard" href="{{ url_for('chooseHard') }}">Hard</a></li>
+     </ul>
+     <br>
+     <br>
+     <ul id="Ace_challage">
+         <li><a id="Ace_AllChallage" href="{{ url_for('challage_All') }}">Challage</a></li>
+
+     </ul>
+ </div>
+
+
+</body>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="{{ url_for("static" , filename="style.css")}}">
+<!--<script src="/static/js/countdown.js"></script>-->
+<script>
+    document.addEventListener("DOMContentLoaded",refreshRun);
+		function refreshRun(){
+            document.getElementById("Ace_Game_Start").style.display="block";
+            document.getElementById("testing").style.display="none";
+            document.getElementById("timeup").style.display="none";
+            var seconds;
+            var temp;
+            countdown();
+            function countdown() {
+                seconds = document.getElementById('countdown').value;
+                seconds = parseInt(seconds, 10);
+                document.getElementById("Extra").innerText="";
+            if (seconds == 1) {
+                document.getElementById("testing").style.display="block";
+                document.getElementById("Extra").innerText="0";
+                document.getElementById("timeup").style.display="block";
+
+                document.getElementById("Ace_Game_Start").style.display="none";
+                return;
+            }else if (seconds==6){
+
+                document.getElementById("Extra").innerText="You left 5 seconds";
+
+            }
+
+            seconds--;
+            temp = document.getElementById('countdown');
+            temp.value = seconds;
+            timeoutMyOswego = setTimeout(countdown, 1000);
+            }
+		}
+</script>
+
+
+<body>
+<div id="Ace_Game_Start">
+
+{% if checkIfCorrect !=howManyQ%}
+
+<form method="post">
+<table>
+    <tr><td><h1  class="hide">Q{{ checkIfCorrect }} )</h1></td></tr>
+
+    <tr><td class="Ace_SizeIsFixed"><h1 id="Ace_MoveToRight" class="hide">{{ Q1 }} {{ Signs }} {{ Q2 }}=</h1></td><td><input type="number" name="userA" id="userA" min="1" max="9999"  required value="{{ request.form['userA'] }}"></td></tr>
+</table>
+    <br>
+    <br>
+    <br>
+    <table>
+    <tr><td><h1 id="Ace_MoveToRight2">Seconds Left: </h1></td><td><input id="countdown" name="countdown" size="1" value="{{ request.form['countdown'] or taketime }}" readonly></td><td><h1 id="Extra"></h1></td></tr>
+    </table>
+    <h1 id="Ace_MoveToRight" class="Ace_Make_IT_Hover"><input id="Ace_ChangeSize_InCalGameStart" type="submit"  value="Next Q"></h1>
+
+
+</form>
+
+
+<!--
+
+<h1 id="countdown" >180</h1>
+
+<h1 id="countdown" >180</h1><h1 id="Extra"></h1>
+put number input disabled it
+    <textarea name="body" id="body"></textarea>
+take the number store it with class
+then display her again
+
+-->
+
+
+{% else %}
+    <h1 id="Ace_welldone" >Well done ..</h1>
+<button class="Ace_Make_IT_Hover" ><a id="Ace_ChangeSize_InCalGameStart" href="{{ url_for('results') }}">Results</a></button>
+{% endif %}
+</div>
+
+    <h1 id="timeup" >Times up</h1>
+<button id="testing" class="Ace_Make_IT_Hover"><a id="Ace_ChangeSize_InCalGameStart" href="{{ url_for('results') }}">Results</a></button>
+
+</body>
+

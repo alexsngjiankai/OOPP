@@ -3,7 +3,7 @@ from persistence import *
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/gameSelection')
 def goToGameSelection():#step1
     return render_template("ace/game_Selection.html")
 

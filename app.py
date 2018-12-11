@@ -22,6 +22,7 @@ def goToGameSelection():#step1
 @app.route('/calculatorGame')#step2
 def goToCalculator():
     delete_All()
+    Store_game_name("Cal")# still on going next need another page to show history // work in progress
     save_The_Time(180)
 
     return render_template("ace/calculatorGame.html")

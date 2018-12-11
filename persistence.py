@@ -12,6 +12,7 @@ def give_random(num1,num2):
     return E1
 storeE1=shelve.open("E1")
 temStore=shelve.open('Chall')
+History_All_Game = shelve.open('HistoryOfAllGame')
 #storeE2=shelve.open("E2")
 #store_UAnswer=shelve.open("userAnswer")
 
@@ -149,4 +150,37 @@ def ChallageStartInP():
 def get_NumberOfQ():
     Q=temStore['temCha']
     return Q.Range
+
+def Store_game_name(name):
+    temStore["AppName"]=name
+def give_App_Name():
+    theName=temStore["AppName"]
+    return theName
+
+def StoreHistory(id):
+    exist=False
+    for i in History_All_Game:
+        if i == id:
+            OldHistory=History_All_Game[id]
+            for o in OldHistory:
+                if o ==give_App_Name():
+                    The_List=OldHistory[i]
+                    if len(The_List)==3:
+                        del The_List[0]
+                        The_List.extend(test_print())
+                        OldHistory[o] = The_List
+
+                    else:
+                        The_List.append(test_print())
+                        OldHistory[o]=The_List
+                        History_All_Game[id]=OldHistory
+                    exist=True
+                    break
+            break
+    if exist==False:#not done yet
+        current_List=test_print()
+        App_name=give_App_Name()
+        Game_Name={}
+        Game_Name[App_name]=current_List
+        History_All_Game[id]=Game_Name
 #Ace END

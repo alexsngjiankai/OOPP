@@ -12,13 +12,9 @@ def medList():
     return render_template("Alex/medList.html")
 
 
-if __name__ == '__app__':
-    app.run()
-
-
-
 #asd
-#Ace
+
+#Ace------------------------------------------------------------------------------------------------------------------------------
 @app.route('/gameSelection')
 def goToGameSelection():#step1
     return render_template("ace/game_Selection.html")
@@ -209,6 +205,8 @@ def results():
     if len(test_print())!=0:
         tomtom=test_print()
         checkIfCorrect = checkrange()
+        id="checker"
+        StoreHistory(id)
         delete_All()
         return render_template( "ace/maybe_combine.html",tomtom=tomtom,checkIfCorrect=checkIfCorrect)
     else:
@@ -216,4 +214,8 @@ def results():
 
 
 
-#End_ACE
+#End_ACE--------------------------------------------------------------------------------------------------------
+
+
+if __name__ == '__app__':
+    app.run()

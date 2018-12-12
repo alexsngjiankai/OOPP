@@ -5,6 +5,7 @@
 <div>
     <div>
 {% for i in history_cal %}
+
     {% for u in i %}
         <p>{{ u['EQ1'] }} {{u['S'] }} {{ u['EQ2'] }}={{ u['U'] }}  ans:{{ u['A']  }}</p>
         {% if u["C"]=="Incorrect" %}

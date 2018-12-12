@@ -190,12 +190,6 @@ def StoreHistory(id):
         dict_Tem[App_name]=list_Tem
         History_All_Game[id] = dict_Tem
 
-        #current_List=test_print()
-        #del current_List[-1]
-        #App_name=give_App_Name()
-        #Game_Name={}
-        #Game_Name[App_name]=current_List
-        #History_All_Game[id]=Game_Name
 
 def give_history_cal(id,GameName):
 
@@ -204,10 +198,4 @@ def give_history_cal(id,GameName):
         if i == GameName:
             The_list=dict_IThink[i] # got two list in here
             return The_list
-
-    #for i in current_history:
-  #      if i==GameName:
-    #        print_It_Out=current_history[i]
-     #       return print_It_Out
-   # return ""
 #Ace END

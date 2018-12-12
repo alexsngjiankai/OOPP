@@ -159,26 +159,25 @@ def give_App_Name():
 
 def StoreHistory(id):
     exist=False
-    #for i in History_All_Game:
-     #   if i == id:
-      #      OldHistory=History_All_Game[i]
-       #     for o in OldHistory:
-        #        if o ==give_App_Name():
-         #           The_List=OldHistory[o]
-          #          if len(The_List)==3:
-            #            del The_List[0]
-             #           current_List=test_print()
-              #          del current_List[-1]
-            #            The_List.extend(current_List)
-             #           OldHistory[o] = The_List
-#
-          #          else:
-         #               The_List.append(test_print())
-         #               OldHistory[o]=The_List
-         #               History_All_Game[id]=OldHistory
-         #           exist=True
-          #          break
-          #  break
+    for i in History_All_Game:
+        if i == id:
+            All_History=History_All_Game[i]#take first dict value
+            for o in All_History:
+                if o == give_App_Name():
+                    All_content=All_History[o]#take second dict value
+                    if len(All_content)==3:
+                        break
+                    else:
+
+                        current_List = test_print()
+                        del current_List[-1]
+                        All_content.append(current_List)
+                        All_History[give_App_Name()]=All_content
+
+                        History_All_Game[id] =All_History
+                        break
+            exist=True
+            break
     if exist==False:#not done yet
         dict_Tem={}
         list_Tem=[]
@@ -193,9 +192,19 @@ def StoreHistory(id):
 
 def give_history_cal(id,GameName):
 
-    dict_IThink=History_All_Game[id]
+    dict_IThink=History_All_Game[id] #take first dic value
     for i in dict_IThink:
         if i == GameName:
-            The_list=dict_IThink[i] # got two list in here
+            The_list=dict_IThink[i]# got two list in here take second dict value
+            print(The_list)
             return The_list
+    return ""
 #Ace END
+def checker_history():
+    if len(History_All_Game)!=0:
+        dict_IThink = History_All_Game["checkme"]
+        print(dict_IThink)
+        for i in dict_IThink:
+            if i == "Cal":
+                The_list = dict_IThink[i]  # got two list in here take second dict value
+                print(The_list)

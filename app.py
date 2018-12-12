@@ -22,6 +22,7 @@ def goToGameSelection():#step1
 @app.route('/calculatorGame')#step2
 def goToCalculator():
     delete_All()
+    checker_history()
     Store_game_name("Cal")# still on going next need another page to show history // work in progress
     save_The_Time(180)
 
@@ -210,13 +211,16 @@ def results():
         App_name=give_App_Name()
         StoreHistory(id)
         #delete_All()
+        checker_history()
         return render_template( "ace/maybe_combine.html",tomtom=tomtom,checkIfCorrect=checkIfCorrect,App_name=App_name)
+
     else:
         return render_template("ace/maybe_combine.html")
 
 @app.route("/History")
 def history():
     id="checkme"
+    checker_history()
     history_cal=give_history_cal(id,"Cal")
 
     return render_template("ace/History.html",history_cal=history_cal)

@@ -3,16 +3,16 @@ from persistence import *
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/gameSelection')
 def goToGameSelection():#step1
-    return render_template("game_Selection.html")
+    return render_template("ace/game_Selection.html")
 
 @app.route('/calculatorGame')#step2
 def goToCalculator():
     delete_All()
     save_The_Time(180)
 
-    return render_template("calculatorGame.html")
+    return render_template("ace/calculatorGame.html")
 @app.route('/calculatorGame/Easy', methods=('GET', 'POST'))
 def chooseEasy():
     #cal=diffcuity("calculatorGame",diff)
@@ -51,7 +51,7 @@ def chooseEasy():
     checkIfCorrect=checkrange()
 
 
-    return render_template("CalGameStart.html",total=total,currentQ=currentQ,tomtom=tomtom,Q1=Q1,Q2=Q2
+    return render_template("ace/CalGameStart.html",total=total,currentQ=currentQ,tomtom=tomtom,Q1=Q1,Q2=Q2
                            ,checkIfCorrect=checkIfCorrect,howManyQ=howManyQ,Signs=Signs,taketime=taketime)
 
 
@@ -90,7 +90,7 @@ def chooseNormal():
     Signs = give_Sign()
     checkIfCorrect = checkrange()
 
-    return render_template("CalGameStart.html", total=total, currentQ=currentQ, tomtom=tomtom, Q1=Q1, Q2=Q2,
+    return render_template("ace/CalGameStart.html", total=total, currentQ=currentQ, tomtom=tomtom, Q1=Q1, Q2=Q2,
                            checkIfCorrect=checkIfCorrect, howManyQ=howManyQ,taketime=taketime,Signs=Signs)
 
 
@@ -128,7 +128,7 @@ def chooseHard():
     Signs = give_Sign()
     checkIfCorrect = checkrange()
 
-    return render_template("CalGameStart.html", total=total, currentQ=currentQ, tomtom=tomtom, Q1=Q1, Q2=Q2,
+    return render_template("ace/CalGameStart.html", total=total, currentQ=currentQ, tomtom=tomtom, Q1=Q1, Q2=Q2,
                            checkIfCorrect=checkIfCorrect, howManyQ=howManyQ,taketime=taketime,Signs=Signs)
 
 @app.route("/calculatorGame/Challage" , methods=('GET', 'POST'))
@@ -149,7 +149,7 @@ def challage_All():
             return redirect(url_for('challageStart'))
 
         # if not UAns:
-    return render_template("Challage.html")
+    return render_template("ace/Challage.html")
 
 @app.route("/calculatorGame/Challage/GO" , methods=('GET', 'POST'))
 def challageStart():
@@ -184,7 +184,7 @@ def challageStart():
     howManyQ=int(get_NumberOfQ())+1
     checkIfCorrect = checkrange()
 
-    return render_template("CalGameStart.html", total=total, currentQ=currentQ, tomtom=tomtom, Q1=Q1, Q2=Q2,
+    return render_template("ace/CalGameStart.html", total=total, currentQ=currentQ, tomtom=tomtom, Q1=Q1, Q2=Q2,
                            checkIfCorrect=checkIfCorrect, howManyQ=howManyQ,Signs=Signs,taketime=taketime)
 
 @app.route("/calculatorGame/test/results")
@@ -194,9 +194,9 @@ def results():
         tomtom=test_print()
         checkIfCorrect = checkrange()
         delete_All()
-        return render_template( "maybe_combine.html",tomtom=tomtom,checkIfCorrect=checkIfCorrect)
+        return render_template( "ace/maybe_combine.html",tomtom=tomtom,checkIfCorrect=checkIfCorrect)
     else:
-        return render_template("maybe_combine.html")
+        return render_template("ace/maybe_combine.html")
 
 
 if __name__ == '__main__':

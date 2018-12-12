@@ -200,20 +200,26 @@ def challageStart():
     return render_template("ace/CalGameStart.html", total=total, currentQ=currentQ, tomtom=tomtom, Q1=Q1, Q2=Q2,
                            checkIfCorrect=checkIfCorrect, howManyQ=howManyQ,Signs=Signs,taketime=taketime)
 
-@app.route("/calculatorGame/test/results")
+@app.route("/results")
 def results():
     #testIfITWorks=test_print()
     if len(test_print())!=0:
         tomtom=test_print()
         checkIfCorrect = checkrange()
-        id="checker"
+        id="checkme"
+        App_name=give_App_Name()
         StoreHistory(id)
-        delete_All()
-        return render_template( "ace/maybe_combine.html",tomtom=tomtom,checkIfCorrect=checkIfCorrect)
+        #delete_All()
+        return render_template( "ace/maybe_combine.html",tomtom=tomtom,checkIfCorrect=checkIfCorrect,App_name=App_name)
     else:
         return render_template("ace/maybe_combine.html")
 
+@app.route("/History")
+def history():
+    id="checkme"
+    history_cal=give_history_cal(id,"Cal")
 
+    return render_template("ace/History.html",history_cal=history_cal)
 
 #End_ACE--------------------------------------------------------------------------------------------------------
 

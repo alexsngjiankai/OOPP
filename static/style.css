@@ -90,6 +90,7 @@ padding-right:10px;
     width:100%;
      font-size: 30px;
 
+
 }
 #Ace_QSpam {
 
@@ -122,6 +123,8 @@ padding-right:10px;
 }
 #countdown{
     font-size:35px;
+    border-width:0px;
+    border:none;
 }
 .Ace_SizeIsFixed{
     width:500px;
@@ -133,4 +136,57 @@ padding-right:10px;
 .Ace_Make_IT_Hover :hover{
     background-color: gainsboro;
 
+}
+.For_Results_All{
+
+    background-color: whitesmoke;
+    width:70%;
+    border: 2px black solid;
+    margin: auto;
+}
+#wanna_make_it_to_the_right{
+
+    float:right;
+}
+.LabelForChallage{
+padding-top:20px;
+    padding-bottom: 20px;
+font-size:30px;
+
+}
+
+#Challage_BOX {
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+    text-align: center;
+    background-color: lightgray;
+
+
+}
+#Challage_BOX label{
+
+}
+#Challage_body{
+ margin-left: auto;
+  margin-right: auto;
+}
+#Challage_Submit{
+width:100%;
+    font-size:25px;
+}
+.being_Lazy{
+    text-align: center;
+}
+
+#Challage_Return li {
+    display: inline-block;
+    width:100%;
+}
+#Challage_Return li a{
+    text-decoration: none;
+    font-size:25px;
+    padding-left: 40%;
+    padding-right: 40%;
+    background-color: whitesmoke;
 }

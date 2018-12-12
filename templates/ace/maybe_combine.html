@@ -7,7 +7,8 @@
 <h1 >Results</h1>
 
 
-
+{% if App_name=="Cal" %}
+    <div class="For_Results_All">
 {% for i in tomtom %}
     {% if i['U']!=0 %}
    <h1 id="Ace_QSpam">{{ i['EQ1'] }} {{i['S'] }} {{ i['EQ2'] }}={{ i['U'] }}  ans:{{ i['A'] }}
@@ -25,8 +26,9 @@
    </h1>
     {% endif %}
 {% endfor %}
-
-<button class="Ace_Make_IT_Hover"><a id="Ace_ChangeSize_InCalGameStart" href="{{ url_for('goToGameSelection') }}">Back to game select</a></button>
+    </div>
+{% endif %}
+<button class="Ace_Make_IT_Hover" id="wanna_make_it_to_the_right"><a id="Ace_ChangeSize_InCalGameStart" href="{{ url_for('goToGameSelection') }}">Back to game select</a></button>
 
 </div>
 </body>

@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <link rel="stylesheet" type="text/css" href="{{ url_for("static" , filename="style.css")}}">
 
-<body id="Ace_body">
-<h1>Setting Challage</h1>
+<body id="Ace_body" class="being_Lazy">
 
 
+    <h1>Setting Challage</h1><br><br>
+<div id="Challage_BOX">
 
 <form method="post">
 
-    <label>Starting range
-    <input type="number" id="Ace_Start" name="Start" min="1" max="25" value="{{ request.form['Start'] }}" required>
-    </label>
-    <br>
-    <label>Ending Range
-    <input type="number" id="Ace_End" name="End" min="26" max="999" value="{{ request.form['End'] }}" required>
-    </label>
-        <br>
+    <h3 class="LabelForChallage">Starting number range to Ending Number Range</h3>
 
-    <label>Amount of Question
-    <input type="number" id="Ace_Range" name="Range" min="5" max="100" value="{{ request.form['Range'] }}" required>
-    </label>
-    <br>
-    <label>Countdown time in seconds
-    <input type="number" id="Ace_Time" name="Time" min="10" max="300" value="{{ request.form['Time'] }}"  required>
-    </label>
-    <br>
+  <table id="Challage_body">
 
-    <input type="submit" value="Start">
+        <tr><td><label class="LabelForChallage">Starting number range:</label></td><td><input type="number" id="Ace_Start" name="Start" min="1" max="25" value="{{ request.form['Start'] }}" required></td></tr>
+        <tr><td><label class="LabelForChallage">Ending Number range:</label></td><td> <input type="number" id="Ace_End" name="End" min="26" max="999" value="{{ request.form['End'] }}" required></td></tr>
+        <tr><td> <label class="LabelForChallage">Amount of Question:</label></td><td><input type="number" id="Ace_Range" name="Range" min="5" max="100" value="{{ request.form['Range'] }}" required></td></tr>
+        <tr><td><label class="LabelForChallage">Countdown time in seconds:</label></td><td><input type="number" id="Ace_Time" name="Time" min="10" max="300" value="{{ request.form['Time'] }}"  required></td></tr>
+
+    </table>
+    <input id="Challage_Submit" type="submit" value="Start Challage">
+
     </form>
+    <ul id="Challage_Return">
+    <li><a href="{{ url_for('goToCalculator') }}">Return</a></li>
+    </ul>
 
+    <!-- tmr will contiune do css will put button and a<-- with paddding -->
+</div>
 </body>
 <!--
 <table>

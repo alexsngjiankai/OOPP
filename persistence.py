@@ -159,28 +159,55 @@ def give_App_Name():
 
 def StoreHistory(id):
     exist=False
-    for i in History_All_Game:
-        if i == id:
-            OldHistory=History_All_Game[id]
-            for o in OldHistory:
-                if o ==give_App_Name():
-                    The_List=OldHistory[i]
-                    if len(The_List)==3:
-                        del The_List[0]
-                        The_List.extend(test_print())
-                        OldHistory[o] = The_List
-
-                    else:
-                        The_List.append(test_print())
-                        OldHistory[o]=The_List
-                        History_All_Game[id]=OldHistory
-                    exist=True
-                    break
-            break
+    #for i in History_All_Game:
+     #   if i == id:
+      #      OldHistory=History_All_Game[i]
+       #     for o in OldHistory:
+        #        if o ==give_App_Name():
+         #           The_List=OldHistory[o]
+          #          if len(The_List)==3:
+            #            del The_List[0]
+             #           current_List=test_print()
+              #          del current_List[-1]
+            #            The_List.extend(current_List)
+             #           OldHistory[o] = The_List
+#
+          #          else:
+         #               The_List.append(test_print())
+         #               OldHistory[o]=The_List
+         #               History_All_Game[id]=OldHistory
+         #           exist=True
+          #          break
+          #  break
     if exist==False:#not done yet
+        dict_Tem={}
+        list_Tem=[]
         current_List=test_print()
-        App_name=give_App_Name()
-        Game_Name={}
-        Game_Name[App_name]=current_List
-        History_All_Game[id]=Game_Name
+        del current_List[-1]
+
+        App_name = give_App_Name()
+        list_Tem.append(current_List)
+        dict_Tem[App_name]=list_Tem
+        History_All_Game[id] = dict_Tem
+
+        #current_List=test_print()
+        #del current_List[-1]
+        #App_name=give_App_Name()
+        #Game_Name={}
+        #Game_Name[App_name]=current_List
+        #History_All_Game[id]=Game_Name
+
+def give_history_cal(id,GameName):
+
+    dict_IThink=History_All_Game[id]
+    for i in dict_IThink:
+        if i == GameName:
+            The_list=dict_IThink[i] # got two list in here
+            return The_list
+
+    #for i in current_history:
+  #      if i==GameName:
+    #        print_It_Out=current_history[i]
+     #       return print_It_Out
+   # return ""
 #Ace END

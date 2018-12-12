@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<link rel="stylesheet" type="text/css" href="{{ url_for("static" , filename="style.css")}}">
+<html lang="en">
+<div>
+    <div>
+{% for i in history_cal %}
+    {% for u in i %}
+        <p>{{ u['EQ1'] }} {{u['S'] }} {{ u['EQ2'] }}={{ u['U'] }}  ans:{{ u['A']  }}</p>
+        {% if u["C"]=="Incorrect" %}
+       <h1 id="Ace_Incorrect">{{ u['C'] }}</h1>
+        {% else %}
+           <h1 id="Ace_Correct">{{ u['C'] }}</h1>
+       {% endif %}
+          {% endfor %}
+        <br>
+    {% endfor %}
+    </div>
+</div>
+</html>

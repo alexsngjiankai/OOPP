@@ -165,9 +165,9 @@ def StoreHistory(id):
             for o in All_History:
                 if o == give_App_Name():
                     All_content=All_History[o]#take second dict value
-                    if len(All_content)==3:
+                    if len(All_content)==3:#not done
                         break
-                    else:
+                    else:#working
 
                         current_List = test_print()
                         del current_List[-1]
@@ -178,7 +178,7 @@ def StoreHistory(id):
                         break
             exist=True
             break
-    if exist==False:#not done yet
+    if exist==False:#working
         dict_Tem={}
         list_Tem=[]
         current_List=test_print()

@@ -7,9 +7,20 @@ app = Flask(__name__)
 def medselection():
     return render_template("Alex/medselection.html")
 
+
 @app.route("/medList")
 def medList():
     return render_template("Alex/medList.html")
+
+# Jinann testing
+@app.route('/scheme2')
+def base():
+    return render_template('JinAnn/scheme2.html')
+
+
+@app.route('/scheme')
+def scheme():
+    return render_template('JinAnn/scheme.html')
 
 
 if __name__ == '__app__':

@@ -69,7 +69,7 @@ def chooseEasy():
             storeUserAnswer(UAns)# store all the 10 + 10
         return redirect(url_for('chooseEasy'))
 
-#hello
+#hello3
     if total == 0:
         store(E1, E2)
 

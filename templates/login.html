@@ -1,39 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Log In</title>
-    <link rel="stylesheet" type="text/css" href="./static/css.css">
-</head>
-<body>
-<h2>login</h2>
-    <div>
-        <a href=/>Home</a>
-        <a href=/medselection>Medication</a>
-        <a href=/bookappointment>Book appointment</a>
-        <a href=/contacthelp>Contact and Help</a>
-        <a href=/profile>Profile & Settings</a>
-        <a href=/signup>Sign Up</a>
-        <a href=/login>Login</a>
-        <a href=/games>Games</a>
-        <a href=/schemes>Schemes</a>
-    </div>
-    <div>
-        {% extends 'base1.html' %}
+{% extends 'base1.html' %}
 
-        {% block header %}
-          <h1>{% block title %}Log In{% endblock %}</h1>
-        {% endblock %}
+{% block header %}
+  <h1>{% block title %}Log In{% endblock %}</h1>
+{% endblock %}
 
-        {% block content %}
-          <form method="post" action="/login">
-            <label for="username">Username</label>
-            <input name="username" id="username" required>
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" required>
-            <input type="submit" value="Log In">
-          </form>
-        {% endblock %}
-    </div>
-</body>
-</html>
+{% block content %}
+  <form method="post" action="/login">
+    <label for="username">Username</label>
+    <input name="username" id="username" required>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" required>
+    <input type="submit" value="Log In">
+  </form>
+{% endblock %}

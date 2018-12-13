@@ -18,7 +18,7 @@ def medselection():
 def medlist():
     return render_template("Alex/medList.html")
 
-# Jinann testing
+# Jinann testingg
 
 
 @app.route('/scheme2')

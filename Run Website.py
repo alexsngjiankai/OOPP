@@ -1,6 +1,5 @@
 from flask import Flask, render_template
 from persistence import *
-import functools
 from persistence1 import *
 
 app = Flask(__name__)

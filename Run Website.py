@@ -1,36 +1,37 @@
-from flask import *
-from persistence import * #Ace using
+from flask import Flask, render_template
+from persistence1 import *
+from persistence import *
+import functools
+
 app = Flask(__name__)
 
-@app.route('/')
-def homepage():
-    return render_template('/homepage.html')
+@app.route("/")
+def index():
+    return render_template('homepage.html')
 
+@app.route("/profile")
+def profile():
+    return render_template('profile.html')
+
+@app.route("/contacthelp")
+def contacthelp():
+    return render_template('contacthelp.html')
+
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
 @app.route('/medselection')
 def medselection():
     return render_template("Alex/medselection.html")
 
-
 @app.route("/medList")
-def medlist():
+def medList():
     return render_template("Alex/medList.html")
-
-# Jinann testing
-
-
-@app.route('/scheme2')
-def base():
-    return render_template('JinAnn/scheme2.html')
-
-
-@app.route('/scheme')
-def scheme():
-    return render_template('JinAnn/scheme.html')
-
-
-if __name__ == '__app__':
-    app.run()
 
 @app.route('/gameSelection')
 def goToGameSelection():#step1
@@ -227,6 +228,5 @@ def results():
     else:
         return render_template("ace/maybe_combine.html")
 
-
-
-#End_ACE
+if __name__ == "__main__":
+     app.run(debug=True)

@@ -47,15 +47,15 @@ nav a:hover{
 }
 
 div h2 {
-    background-color:antiquewhite;
+    background-color:darkslategrey;
     line-height: 80px;
     margin: 30px;
     border-radius: 5px;
     border-style: solid ;
-    border-color: lavender ;
+    border-color: white ;
 
     padding-left:15px;
-    color: blueviolet;
+    color: white;
 
 
 }

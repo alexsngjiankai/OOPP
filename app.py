@@ -34,7 +34,7 @@ if __name__ == '__app__':
 
 
 
-#asd
+
 #Ace
 @app.route('/gameSelection')
 def goToGameSelection():#step1
@@ -44,7 +44,7 @@ def goToGameSelection():#step1
 def goToCalculator():
     delete_All()
     save_The_Time(180)
-
+    Store_game_name("Cal")
     return render_template("ace/calculatorGame.html")
 @app.route('/calculatorGame/Easy', methods=('GET', 'POST'))
 def chooseEasy():
@@ -71,11 +71,8 @@ def chooseEasy():
             storeUserAnswer(UAns)# store all the 10 + 10
         return redirect(url_for('chooseEasy'))
 
-#hello
     if total == 0:
         store(E1, E2)
-
-
     currentQ = total + 1
     Q1=giveE1()
     Q2=giveE2()
@@ -226,11 +223,23 @@ def results():
     if len(test_print())!=0:
         tomtom=test_print()
         checkIfCorrect = checkrange()
+        id="checkme"
+        App_name=give_App_Name()
+        StoreHistory(id)
         delete_All()
-        return render_template( "ace/maybe_combine.html",tomtom=tomtom,checkIfCorrect=checkIfCorrect)
+        checker_history()
+        return render_template( "ace/maybe_combine.html",tomtom=tomtom,checkIfCorrect=checkIfCorrect,App_name=App_name)
+
     else:
         return render_template("ace/maybe_combine.html")
 
+@app.route("/History")
+def history():
+    id="checkme"
+    checker_history()
+    history_cal=give_history_cal(id,"Cal")
+
+    return render_template("ace/History.html",history_cal=history_cal)
 
 
 #End_ACE

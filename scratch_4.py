@@ -8,7 +8,7 @@ def index():
 
 @app.route("/profile")
 def profile():
-    return render_template(('profile.html'))
+    return render_template('profile.html')
 
 @app.route("/contacthelp")
 def contacthelp():

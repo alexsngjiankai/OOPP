@@ -15,10 +15,6 @@ def medList():
 if __name__ == '__app__':
     app.run()
 
-
-
-#asd
-#Ace
 @app.route('/gameSelection')
 def goToGameSelection():#step1
     return render_template("ace/game_Selection.html")

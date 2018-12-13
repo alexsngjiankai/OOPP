@@ -2,6 +2,10 @@ from flask import *
 from persistence import * #Ace using
 app = Flask(__name__)
 
+@app.route('/')
+def homepage():
+    return render_template('/homepage.html')
+
 
 @app.route('/medselection')
 def medselection():
@@ -9,10 +13,12 @@ def medselection():
 
 
 @app.route("/medList")
-def medList():
+def medlist():
     return render_template("Alex/medList.html")
 
 # Jinann testing
+
+
 @app.route('/scheme2')
 def base():
     return render_template('JinAnn/scheme2.html')

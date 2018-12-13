@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href = " {{ url_for('static', filename = 'Base.css') }}" />
+
+        <nav>
+			<br>
+			<a id='weblogo' href=''>
+			<img src='' alt='WebPage Logo'/>
+			</a>
+
+			<a class='link' href="#">Scheme</a>
+			<a class='link' href="#">Calendar</a>
+			<a class='link' href="#">Game</a>
+			<a class='link' href="#">Home</a>
+		</nav>
+
+
+<div id="topempty"></div>
+{%  block content %}{% endblock %}
+
+</html>
+
+

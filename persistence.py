@@ -4,7 +4,7 @@ import time
 
 
 
-#ace Start
+#Ace Start
 def give_random(num1,num2):
     E1=random.randint(num1,num2)
 
@@ -12,6 +12,7 @@ def give_random(num1,num2):
     return E1
 storeE1=shelve.open("E1")
 temStore=shelve.open('Chall')
+History_All_Game = shelve.open('HistoryOfAllGame')
 #storeE2=shelve.open("E2")
 #store_UAnswer=shelve.open("userAnswer")
 
@@ -149,4 +150,74 @@ def ChallageStartInP():
 def get_NumberOfQ():
     Q=temStore['temCha']
     return Q.Range
-#ace END
+
+def Store_game_name(name):
+    temStore["AppName"]=name
+def give_App_Name():
+    theName=temStore["AppName"]
+    return theName
+
+def StoreHistory(id):
+    exist=False
+    for i in History_All_Game:
+        if i == id:
+            All_History=History_All_Game[i]#take first dict value
+            for o in All_History:
+                if o == give_App_Name():
+                    All_content=All_History[o]#take second dict value
+                    if len(All_content)==3:#not done
+                        break
+                    else:#working
+
+                        current_List = test_print()
+                        del current_List[-1]
+                        print('**********1****::...')
+                        print(current_List)
+
+                        All_content.append(current_List)
+                        print('**********2****::...')
+                        print(All_content)
+                        All_History[give_App_Name()]=All_content
+
+                        History_All_Game[id] =All_History
+                        print('**********3****::...')
+                        print(All_History)
+                        break
+            exist=True
+            break
+    if exist==False:#working
+        dict_Tem={}
+        list_Tem=[]
+        current_List=test_print()
+        del current_List[-1]
+
+        App_name = give_App_Name()
+        print('**********1****::...')
+        print(current_List)
+        list_Tem.append(current_List)
+        print('**********2****::...')
+        print(list_Tem)
+        dict_Tem[App_name]=list_Tem
+        History_All_Game[id] = dict_Tem
+        print('**********3****::...')
+        print(dict_Tem)
+
+
+def give_history_cal(id,GameName):
+
+    dict_IThink=History_All_Game[id] #take first dic value
+    for i in dict_IThink:
+        if i == GameName:
+            The_list=dict_IThink[i]# got two list in here take second dict value
+            print(The_list)
+            return The_list
+    return ""
+#Ace END
+def checker_history():
+    if len(History_All_Game)!=0:
+        dict_IThink = History_All_Game["checkme"]
+        print(dict_IThink)
+        for i in dict_IThink:
+            if i == "Cal":
+                The_list = dict_IThink[i]  # got two list in here take second dict value
+                print(The_list)

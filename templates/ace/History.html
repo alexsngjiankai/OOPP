@@ -4,8 +4,12 @@
 <html lang="en">
 <div>
     <div>
-{% for i in history_cal %}
-
+        <h1>TEST</h1>
+    {{ history_cal }}
+{%
+        for i in history_cal
+        %}
+{{ i }}
     {% for u in i %}
         <p>{{ u['EQ1'] }} {{u['S'] }} {{ u['EQ2'] }}={{ u['U'] }}  ans:{{ u['A']  }}</p>
         {% if u["C"]=="Incorrect" %}

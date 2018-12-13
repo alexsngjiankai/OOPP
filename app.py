@@ -2,6 +2,11 @@ from flask import *
 from persistence import * #Ace using
 app = Flask(__name__)
 
+app.config.from_mapping(
+    SECRET_KEY='dev'
+)
+
+
 @app.route('/')
 def homepage():
     return render_template('/homepage.html')

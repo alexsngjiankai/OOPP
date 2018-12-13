@@ -2,12 +2,23 @@ from flask import Flask, render_template
 from persistence1 import *
 from persistence import *
 import functools
+from medication import med
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
     return render_template('homepage.html')
+
+
+@app.route("/medselection", methods=['GET', 'POST'])
+def medForm():
+    med_form = medForm()
+    if request.method =='GET':
+        return render_template('medselection.html', med_form=med_form)
+    elif request.method =='POST':
+        return render_template('medList.html', med_form=med_form)
+
 
 @app.route("/profile")
 def profile():

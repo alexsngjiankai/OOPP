@@ -1,5 +1,7 @@
 from flask import *
 from persistence import * #Ace using
+from flask import *
+from medication import *
 app = Flask(__name__)
 
 @app.route('/')

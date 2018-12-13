@@ -4,7 +4,7 @@ import time
 
 
 
-#Ace Start
+#ace Start
 def give_random(num1,num2):
     E1=random.randint(num1,num2)
 
@@ -149,4 +149,4 @@ def ChallageStartInP():
 def get_NumberOfQ():
     Q=temStore['temCha']
     return Q.Range
-#Ace END
+#ace END

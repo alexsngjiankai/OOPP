@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="../../static/medstyle.css"/>
+		<link rel="stylesheet" type="text/css" href = "{{ url_for('static', filename='medstyle.css') }}"/>
 
 	</head>
 
@@ -29,9 +29,7 @@
             <tr><td class = "tablecell">1 Jan 2018
 					<div class = "dropdown-content">
                         <ul>
-                            <li>Name</li>
-                            <li>Amount</li>
-                            <li>Description</li>
+
                         </ul>
                     </div>
             </td></tr>

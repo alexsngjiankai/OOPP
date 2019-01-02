@@ -9,31 +9,7 @@ app = Flask(__name__)
 app.config.from_mapping(
     SECRET_KEY='dev'
 )
-#a
 
-
-#Alex---------------------------------------------------------------------------
-@app.route("/medselection", methods=['GET', 'POST'])
-def medForm():
-    med_form = medForm()
-    if request.method =='GET':
-        return render_template('medselection.html', med_form=med_form)
-    elif request.method =='POST':
-        return render_template('medList.html', med_form=med_form)
-
-@app.route('/medList')
-def medList():
-    return render_template("medList.html")
-
-def login_required(view):
-    @functools.wraps(view)
-    def wrapped_view(**kwargs):
-        if session['id'] is None:
-            return redirect(url_for('login'))
-        return view(**kwargs)
-    return wrapped_view
-#end ALex
-#jin ann-------------------------------------------------------------------------------------------------
 @app.route('/scheme2')
 def base():
     return render_template('JinAnn/scheme2.html')
@@ -42,9 +18,11 @@ def base():
 @app.route('/scheme')
 def scheme():
     return render_template('JinAnn/scheme.html')
-#end jin ann----------------------------------
 
-#zhi jian---------------------------------------
+@app.route('/home')
+def home():
+    return render_template('homepage.html')
+
 @app.route("/profile")
 def profile():
     return render_template('profile.html')
@@ -57,6 +35,17 @@ def contacthelp():
 def signup():
     return render_template('signup.html')
 
+@app.route("/medselection", methods=['GET', 'POST'])
+def medForm():
+    med_form = medForm()
+    if request.method =='GET':
+        return render_template('medselection.html', med_form=med_form)
+    elif request.method =='POST':
+        return render_template('medList.html', med_form=med_form)
+
+@app.route('/medList')
+def medList():
+    return render_template("medList.html")
 
 def login_required(view):
     @functools.wraps(view)
@@ -100,6 +89,7 @@ def login():
                 return redirect(url_for('index'))
         flash(error)
     return render_template('login.html')
+(% a = input('enter agage))
 
 @app.route('/register', methods=('GET', 'POST'))
 def register():
@@ -168,24 +158,15 @@ def logout():
     session.clear()
     return redirect(url_for('index'))
 
-
-
-
-#end zhi jian-------------------------------------------------
-
-
-#ace ---------------------------------------------------------
-
 @app.route('/gameSelection')
 def goToGameSelection():#step1
-    checker_history()
     return render_template("ace/game_Selection.html")
 
 @app.route('/calculatorGame')#step2
 def goToCalculator():
     delete_All()
     save_The_Time(180)
-    Store_game_name("Cal")
+
     return render_template("ace/calculatorGame.html")
 @app.route('/calculatorGame/Easy', methods=('GET', 'POST'))
 def chooseEasy():
@@ -212,8 +193,11 @@ def chooseEasy():
             storeUserAnswer(UAns)# store all the 10 + 10
         return redirect(url_for('chooseEasy'))
 
+#hello3
     if total == 0:
         store(E1, E2)
+
+
     currentQ = total + 1
     Q1=giveE1()
     Q2=giveE2()
@@ -364,26 +348,11 @@ def results():
     if len(test_print())!=0:
         tomtom=test_print()
         checkIfCorrect = checkrange()
-        id="checkme"
-        App_name=give_App_Name()
-        StoreHistory(id)
         delete_All()
-        checker_history()
-        return render_template( "ace/maybe_combine.html",tomtom=tomtom,checkIfCorrect=checkIfCorrect,App_name=App_name)
-
+        return render_template( "ace/maybe_combine.html",tomtom=tomtom,checkIfCorrect=checkIfCorrect)
     else:
         return render_template("ace/maybe_combine.html")
 
-@app.route("/History")
-def history():
-    id="checkme"
-    checker_history()
-    history_cal=give_history_cal(id,"Cal")
-
-    return render_template("ace/History.html",history_cal=history_cal)
-
-
-#End ace
 if __name__ == '__main__':
     app.run()
 

@@ -64,7 +64,7 @@ def init():
 def index():
     if 'id' in session:
         posts = get_blogs()
-        return render_template('index.html', posts = posts)
+        return render_template('homepage.html')
     else:
         return render_template('login.html')
 
@@ -89,7 +89,6 @@ def login():
                 return redirect(url_for('index'))
         flash(error)
     return render_template('login.html')
-(% a = input('enter agage))
 
 @app.route('/register', methods=('GET', 'POST'))
 def register():

@@ -2,6 +2,7 @@ from flask import *
 from persistence1 import *
 from persistence import *
 import functools
+from alexpersistance import *
 from medication import *
 from datetime import datetime
 
@@ -35,17 +36,29 @@ def contacthelp():
 def signup():
     return render_template('signup.html')
 
-@app.route("/medselection", methods=['GET', 'POST'])
-def medForm():
-    med_form = medForm()
-    if request.method =='GET':
-        return render_template('medselection.html', med_form=med_form)
-    elif request.method =='POST':
-        return render_template('medList.html', med_form=med_form)
+
+
+
+
+@app.route("/medselection", methods=('GET','POST'))
+def medselection():
+    if request.method == 'POST':
+        name = str(request.form['medname'])
+        amount = str(request.form['medamount'])
+        description = str(request.form['MedDescription'])
+        add_medinfo(name, amount, description)
+        return render_template('medList.html', name = get_medinfo(name)[0], amount = get_medinfo(name)[1], description = get_medinfo(name)[2])
+    return render_template("medselection.html")
 
 @app.route('/medList')
 def medList():
     return render_template("medList.html")
+
+
+
+
+
+
 
 def login_required(view):
     @functools.wraps(view)

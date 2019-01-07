@@ -19,6 +19,10 @@ def base():
 def scheme():
     return render_template('JinAnn/scheme.html')
 
+@app.route('/home')
+def home():
+    return render_template('homepage.html')
+
 @app.route("/profile")
 def profile():
     return render_template('profile.html')
@@ -31,9 +35,13 @@ def contacthelp():
 def signup():
     return render_template('signup.html')
 
-@app.route('/medselection')
-def medselection():
-    return render_template("medselection.html")
+@app.route("/medselection", methods=['GET', 'POST'])
+def medForm():
+    med_form = medForm()
+    if request.method =='GET':
+        return render_template('medselection.html', med_form=med_form)
+    elif request.method =='POST':
+        return render_template('medList.html', med_form=med_form)
 
 @app.route('/medList')
 def medList():
@@ -56,7 +64,7 @@ def init():
 def index():
     if 'id' in session:
         posts = get_blogs()
-        return render_template('index.html', posts = posts)
+        return render_template('homepage.html')
     else:
         return render_template('login.html')
 

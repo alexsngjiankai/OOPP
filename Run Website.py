@@ -14,7 +14,7 @@ app.config.from_mapping(
 @app.route('/scheme2')
 def base():
     return render_template('JinAnn/scheme2.html')
-
+#asddsa
 
 @app.route('/scheme')
 def scheme():
@@ -43,7 +43,7 @@ def signup():
 @app.route("/medselection", methods=('GET','POST'))
 def medselection():
     if request.method == 'POST':
-        session["id"]="test" #delete this when all intergated
+        session["id"]="tester" #delete this when all intergated
         user=session["id"]
         name = str(request.form['medname'])
         amount = str(request.form['medamount'])
@@ -54,7 +54,8 @@ def medselection():
 
 @app.route('/medList')
 def medList():
-    list_med=return_list_med()
+    user=session["id"]
+    list_med=return_list_med(user)
     return render_template('medList.html', list_med=list_med)
 
 

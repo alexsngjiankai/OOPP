@@ -1,0 +1,4 @@
+{
+  "persistence.py::testShowImg": true,
+  "persistence.py::test_print": true
+}

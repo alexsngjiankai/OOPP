@@ -43,16 +43,19 @@ def signup():
 @app.route("/medselection", methods=('GET','POST'))
 def medselection():
     if request.method == 'POST':
+        session["id"]="test" #delete this when all intergated
+        user=session["id"]
         name = str(request.form['medname'])
         amount = str(request.form['medamount'])
         description = str(request.form['MedDescription'])
-        add_medinfo(name, amount, description)
-        return render_template('medList.html', name = get_medinfo(name)[0], amount = get_medinfo(name)[1], description = get_medinfo(name)[2])
+        add_medinfo(user,name, amount, description)
+        return redirect(url_for("medList"))
     return render_template("medselection.html")
 
 @app.route('/medList')
 def medList():
-    return render_template("medList.html")
+    list_med=return_list_med()
+    return render_template('medList.html', list_med=list_med)
 
 
 

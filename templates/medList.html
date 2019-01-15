@@ -24,6 +24,14 @@
             <tr><td>
                 <ul>
                     {% for i in list_med %}
+                    <li>
+                        <p>{{ i["med_name"] }}</p>
+
+                        <p>{{ i["amount"] }}</p>
+
+                        <p>{{ i["description"] }}</p>
+                    </li>
+                    {% endfor %}
 
                 </ul>
             </td></tr>

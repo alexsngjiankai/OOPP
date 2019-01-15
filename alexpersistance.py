@@ -8,10 +8,21 @@ class medication():
         self.description=""
 def add_medinfo(user,name, amount, description):
 #=====================================For new users
-    med=create_one_med(name,amount,description)
-    list=[]
-    list.append(med)
-    meds[user] = med
+    exist=False
+    for i in meds:
+        if i == user:
+            med = create_one_med(name, amount, description)
+            list=meds[user]
+            list.append(med)
+            meds[user] = list
+            exist=True
+
+
+    if exist==False:
+        med=create_one_med(name,amount,description)
+        list=[]
+        list.append(med)
+        meds[user] = list
 
 def get_medinfo(name):
     return meds[name]
@@ -23,9 +34,7 @@ def create_one_med(name,amount,description):
     med.description = description
     return med
 
-def return_list_med():
-    klist = list(meds.keys())
-    x = []
-    for i in klist:
-        x.append(meds[i])
-    return x
+def return_list_med(user):
+    for i in meds:
+        if i ==user:
+            return meds[i]

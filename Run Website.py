@@ -14,7 +14,7 @@ app.config.from_mapping(
 @app.route('/scheme2')
 def base():
     return render_template('JinAnn/scheme2.html')
-
+#asddsa
 
 @app.route('/scheme')
 def scheme():

@@ -266,7 +266,7 @@ def chooseEasy():
 
 
 @app.route('/calculatorGame/Normal', methods=('GET', 'POST'))
-def chooseNormal():
+def chooseNormal():#qwe
     if give_App_Name() == "Cal":
         #cal=diffcuity("calculatorGame",diff)
         E1 = 25

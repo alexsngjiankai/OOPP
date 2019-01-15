@@ -2,24 +2,68 @@
 
 <link rel="stylesheet" type="text/css" href="{{ url_for("static" , filename="style.css")}}">
 <html lang="en">
-<div>
-    <div>
-        <h1>TEST</h1>
-    {{ history_cal }}
-{%
-        for i in history_cal
-        %}
-{{ i }}
-    {% for u in i %}
-        <p>{{ u['EQ1'] }} {{u['S'] }} {{ u['EQ2'] }}={{ u['U'] }}  ans:{{ u['A']  }}</p>
-        {% if u["C"]=="Incorrect" %}
-       <h1 id="Ace_Incorrect">{{ u['C'] }}</h1>
-        {% else %}
-           <h1 id="Ace_Correct">{{ u['C'] }}</h1>
-       {% endif %}
-          {% endfor %}
-        <br>
+<body id="bodyHistory">
+<h1>History</h1>
+<br>
+<br>
+<div class="History_box">
+    <div id="histtory_block_cal">
+    <h1>Calculator History</h1>
+    <ul id="historyOrder">
+{% if history_cal!="" %}
+    {% for i in history_cal %}
+        <li >
+        <p>{{   i[-1]['diff'] }}</p>
+        {% for u in i %}
+
+            <p>{{ u['EQ1'] }} {{u['S'] }} {{ u['EQ2'] }}={{ u['U'] }}  ans:{{ u['A']  }}</p>
+            {% if u["C"]=="Incorrect" %}
+           <h1 id="Ace_Incorrect">{{ u['C'] }}</h1>
+            {% else %}
+               <h1 id="Ace_Correct">{{ u['C'] }}</h1>
+            {% endif %}
+
+        {% endfor %}
+          </li>
+
+
     {% endfor %}
+{% else %}
+<h1>you do not have any history for calculator game</h1>
+    <br>
+<h1>Play the game now</h1>
+{% endif %}
+
+
+    </ul>
     </div>
+
+    <div id="history_block_Guess">
+    <h1>Guess The Number History</h1>
+    <ul id="historyOrder">
+{% if history_Guess!="" %}
+    {% for i in history_Guess %}
+        <li >
+            <p>{{   i[-1]['diff'] }}</p>
+        {% for u in i %}
+
+            <p>Guess Number:{{ u['Question'] }} Your answer:{{ u["User_answer"] }}</p>
+
+        {% endfor %}
+          </li>
+
+
+    {% endfor %}
+{% else %}
+<h1>you do not have any history for Guess_The_Number game</h1>
+    <br>
+<h1>Play the game now</h1>
+{% endif %}
+
+
+    </ul>
+    </div>
+
 </div>
+</body>
 </html>

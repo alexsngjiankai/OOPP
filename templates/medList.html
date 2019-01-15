@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="../../static/medstyle.css"/>
+		<link rel="stylesheet" type="text/css" href = "{{ url_for('static', filename='medstyle.css') }}"/>
 
 	</head>
 
@@ -13,12 +13,7 @@
     <a href="#">Home</a>
 </nav>
 
-
-
 	<!------------------------------------------------------------------------------------------------------------>
-
-
-
 <div class="sect sectOne">
     <div id="emptyspace1"></div>
 		<h1 class="Medhead">Medications to take</h1>
@@ -26,69 +21,13 @@
 
 		<table class = "Medtable" border="4">
 
-            <tr><td class = "tablecell">1 Jan 2018
-					<div class = "dropdown-content">
-                        <ul>
-                            <li>Name</li>
-                            <li>Amount</li>
-                            <li>Description</li>
-                        </ul>
-                    </div>
+            <tr><td>
+                <ul>
+                    {% for i in list_med %}
+
+                </ul>
             </td></tr>
-            <tr><td class = "tablecell">2 Jan 2018
-					<div class = "dropdown-content">
-                        <ul>
-                            <li>Info</li>
-                            <li>Info</li>
-                            <li>Info</li>
-                        </ul>
-                    </div>
-            </td></tr>
-            <tr><td class = "tablecell">3 Jan 2018
-					<div class = "dropdown-content">
-                        <ul>
-                            <li>Info</li>
-                            <li>Info</li>
-                            <li>Info</li>
-                        </ul>
-                    </div>
-            </td></tr>
-            <tr><td class = "tablecell">4 Jan 2018
-					<div class = "dropdown-content">
-                        <ul>
-                            <li>Info</li>
-                            <li>Info</li>
-                            <li>Info</li>
-                        </ul>
-                    </div>
-            </td></tr>
-                        <tr><td class = "tablecell">4 Jan 2018
-					<div class = "dropdown-content">
-                        <ul>
-                            <li>Info</li>
-                            <li>Info</li>
-                            <li>Info</li>
-                        </ul>
-                    </div>
-            </td></tr>
-            <tr><td class = "tablecell">4 Jan 2018
-					<div class = "dropdown-content">
-                        <ul>
-                            <li>Info</li>
-                            <li>Info</li>
-                            <li>Info</li>
-                        </ul>
-                    </div>
-            </td></tr>
-            <tr><td class = "tablecell">4 Jan 2018
-					<div class = "dropdown-content">
-                        <ul>
-                            <li>Info</li>
-                            <li>Info</li>
-                            <li>Info</li>
-                        </ul>
-                    </div>
-            </td></tr>
+
 		</table>
 
 		</div>
@@ -98,87 +37,7 @@
 
 
 <div class="subSection">
-
-
 </div>
-
-
 <!------------------------------------------------------------------------------------------------------------>
-
-
-
-<div class="sect sectTwo">
-		<h1 class="Medhead">Medications to collect</h1>
-
-		<table class = "Medtable" border="4">
-            <tr><td class = "tablecell">1 Jan 2018
-					<div class = "dropdown-content">
-                        <ol>
-                            <li>Info</li>
-                            <li>Info</li>
-                            <li>Info</li>
-                        </ol>
-                    </div>
-            </td></tr>
-            <tr><td class = "tablecell">2 Jan 2018
-					<div class = "dropdown-content">
-                        <ol>
-                            <li>Info</li>
-                            <li>Info</li>
-                            <li>Info</li>
-                        </ol>
-                    </div>
-            </td></tr>
-            <tr><td class = "tablecell">3 Jan 2018
-					<div class = "dropdown-content">
-                        <ol>
-                            <li>Info</li>
-                            <li>Info</li>
-                            <li>Info</li>
-                        </ol>
-                    </div>
-            </td></tr>
-            <tr><td class = "tablecell">4 Jan 2018
-					<div class = "dropdown-content">
-                        <ol>
-                            <li>Info</li>
-                            <li>Info</li>
-                            <li>Info</li>
-                        </ol>
-                    </div>
-            </td></tr>
-            <tr><td class = "tablecell">4 Jan 2018
-					<div class = "dropdown-content">
-                        <ol>
-                            <li>Info</li>
-                            <li>Info</li>
-                            <li>Info</li>
-                        </ol>
-                    </div>
-            </td></tr>
-            <tr><td class = "tablecell">4 Jan 2018
-					<div class = "dropdown-content">
-                        <ol>
-                            <li>Info</li>
-                            <li>Info</li>
-                            <li>Info</li>
-                        </ol>
-                    </div>
-            </td></tr>
-            <tr><td class = "tablecell">4 Jan 2018
-					<div class = "dropdown-content">
-                        <ol>
-                            <li>Info</li>
-                            <li>Info</li>
-                            <li>Info</li>
-                        </ol>
-                    </div>
-            </td></tr>
-
-
-
-		</table>
-
-
 </body>
 </html>

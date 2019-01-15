@@ -27,14 +27,14 @@
  }
 
  .sectOne{
-	 background-image:url("http://i.imgur.com/X0VW0rN.jpg");
+	 background-image:url("https://www.christianimages123.com/wp-content/uploads/2014/06/blue-green-modern-background-300x225.jpg");
  }
 
   .sectTwo{
 	  background-image:url("https://www.ozlighting.com.au/blog/wp-content/uploads/2014/10/bulbs.jpg");
  }
 
-#Medhead{
+.Medhead{
 	font-size: 4em;
 	text-align:center;
     color: black;
@@ -53,7 +53,7 @@
  }
 
  /* CSS FOR THE TABLE--------------------------------------------------------- */
-#Medtable{
+.Medtable{
 	border-collapse:collapse;
 	margin:auto;
 	background-color: white;

@@ -62,8 +62,6 @@ def medList():
 
 
 
-
-
 def login_required(view):
     @functools.wraps(view)
     def wrapped_view(**kwargs):

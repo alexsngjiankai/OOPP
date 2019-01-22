@@ -10,11 +10,17 @@ def add_medinfo(user,name, amount, description):
 #=====================================For new users
     exist=False
     for i in meds:
+        print(i)
         if i == user:
             med = create_one_med(name, amount, description)
-            list=meds[user]
+            print(med)
+
+            list=meds[i]
+            print(list)
             list.append(med)
-            meds[user] = list
+            print(list)
+            del meds[i]
+            meds[i] = list
             exist=True
 
 

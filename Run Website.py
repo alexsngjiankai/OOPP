@@ -43,12 +43,12 @@ def signup():
 @app.route("/medselection", methods=('GET','POST'))
 def medselection():
     if request.method == 'POST':
-        session["id"]="lol" #delete this when all intergated
+        session["id"]="punch" #delete this when all intergated
         user=session["id"]
         name = str(request.form['medname'])
         amount = str(request.form['medamount'])
         description = str(request.form['MedDescription'])
-        add_medinfo(user,name, amount, description)
+        add_medinfo(user, name, amount, description)
         return redirect(url_for("medList"))
     return render_template("medselection.html")
 

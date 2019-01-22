@@ -3,14 +3,23 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href = "{{ url_for('static', filename='medstyle.css') }}"/>
+		<!--<link rel="stylesheet" type="text/css" href = "{{ url_for('static', filename='medstyle.css') }}"/> -->
+        <link rel="stylesheet" type="text/css" href="../static/medstyle.css">
 
 	</head>
 
 
     <body>
 <nav>
-    <a href="#">Home</a>
+        <a href=/homepage>Home</a>
+        <a href=/medselection>Medication</a>
+        <a href=/medList>Medication List</a>
+        <a href=/bookappointment>Book appointment</a>
+        <a href=/contacthelp>Contact and Help</a>
+        <a href=/profile>Profile & Settings</a>
+        <a href=/gameSelection>Games</a>
+        <a href=/schemes>Schemes</a>
+        <a href=/logout>Log out</a>
 </nav>
 
 	<!------------------------------------------------------------------------------------------------------------>
@@ -30,7 +39,9 @@
                         <p>{{ i["amount"] }}</p>
 
                         <p>{{ i["description"] }}</p>
+                    <hr>
                     </li>
+
                     {% endfor %}
 
                 </ul>

@@ -6,6 +6,8 @@ class medication():
         self.med_name=""
         self.amount=0
         self.description=""
+
+
 def add_medinfo(user,name, amount, description):
 #=====================================For new users
     exist=False
@@ -44,3 +46,8 @@ def return_list_med(user):
     for i in meds:
         if i ==user:
             return meds[i]
+
+def delete_med(id):
+    for i in meds:
+        if id == i:
+            del meds[id]

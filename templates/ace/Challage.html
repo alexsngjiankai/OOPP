@@ -3,8 +3,8 @@
 
 <body id="Ace_body" class="being_Lazy">
 
-
-    <h1>Setting Challage</h1><br><br>
+{% if app_name=="Cal" %}
+    <h1>Setting Challage for Calculator game</h1><br><br>
 <div id="Challage_BOX">
 
 <form method="post">
@@ -28,6 +28,29 @@
 
     <!-- tmr will contiune do css will put button and a<-- with paddding -->
 </div>
+
+{% elif app_name=="Guess" %}
+
+   <h1>Setting Challage for Guess The Number game</h1><br><br>
+<div id="Challage_BOX">
+
+<form method="post">
+    <table id="Challage_body">
+        <tr><td><label class="LabelForChallage">Starting number range:</label></td><td><input type="number" id="Ace_Start" name="Start" min="1" max="100" value="{{ request.form['Start'] }}" required></td></tr>
+        <tr><td><label class="LabelForChallage">Ending Number range:</label></td><td> <input type="number" id="Ace_End" name="End" min="25" max="200" value="{{ request.form['End'] }}" required></td></tr>
+        <tr><td> <label class="LabelForChallage">Amount of Question:</label></td><td><input type="number" id="Ace_Range" name="Range" min="2" max="15" value="{{ request.form['Range'] }}" required></td></tr>
+        <tr><td><label class="LabelForChallage">Countdown time in seconds:</label></td><td><input type="number" id="Ace_Time" name="Time" min="2" max="20" value="{{ request.form['Time'] }}"  required></td></tr>
+
+
+
+    </table>
+    <input id="Challage_Submit" type="submit" value="Start Challage">
+</form>
+    <ul id="Challage_Return">
+    <li><a href="{{ url_for('GotoGuess') }}">Return</a></li>
+    </ul>
+    </div>
+{% endif %}
 </body>
 <!--
 <table>

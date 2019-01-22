@@ -8,26 +8,23 @@
 
 </head>
 
-<body>
+<body id = "medselectionbody">
 <nav>
-    <a href="#">Home</a>
+        <a href=homepage/>Home</a>
+        <a href=/medselection>Medication</a>
+        <a href=/medList>Medication List</a>
+        <a href=/bookappointment>Book appointment</a>
+        <a href=/contacthelp>Contact and Help</a>
+        <a href=/profile>Profile & Settings</a>
+        <a href=/gameSelection>Games</a>
+        <a href=/schemes>Schemes</a>
+        <a href=/logout>Log out</a>
 </nav>
 
 <div>
-    <form method="POST">
-        <div>{{med_form.medName.label}}{{med_form.medName}}</div>
-        <div>{{med_form.medAmt.label}}{{med_form.medAmt}}</div>
-        <div>{{med_form.medDesc.label}}{{med_form.medDesc}}</div>
-        <div>{{med_form.submit}}</div>
 
-
-
-
-
-    </form>
-</div>
-<!--<div id="emptyspace2"></div>
-<form id = "medform" method="post">
+<div id="emptyspace2"></div>
+<form id = "medform" method="post" action="/medselection">
 
   <label for="medname">Medicine Name:</label>
   <input type="text" id="medname" name="medname" placeholder="Enter Name of Prescription"><br><div id="emptyspace3"></div>
@@ -41,9 +38,9 @@
     <input type="submit" value="Submit">
 
 </form>
--->
-</body>
 
 
+
+</div>
 </body>
 </html>

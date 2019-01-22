@@ -28,6 +28,17 @@
 {% endfor %}
     </div>
 {% endif %}
+
+{% if App_name== "Guess"%}
+
+    {% for i in tomtom %}
+
+    <h1>{{ i["Question"]}} your answer {{ i["User_answer"] }}</h1>
+
+
+    {% endfor%}
+{% endif %}
+
 <button class="Ace_Make_IT_Hover" id="wanna_make_it_to_the_right"><a id="Ace_ChangeSize_InCalGameStart" href="{{ url_for('goToGameSelection') }}">Back to game select</a></button>
 
 </div>

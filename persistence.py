@@ -26,12 +26,13 @@ class All():
         self.S=""
         self.C=""
         self.timer=0
-def store(E1,E2):
+        self.diff=""
+def store(E1,E2,diff):
 
     all=All()
     all.EQ1=give_random(E1,E2)
     all.EQ2=give_random(E1,E2)
-
+    all.diff=diff
     while True:
         if all.EQ1<all.EQ2:
             all.EQ2 = give_random(E1, E2)
@@ -134,17 +135,29 @@ class challage:
         self.Start=0
         self.End=0
         self.Range=0
+class Guess(challage):
+    def __init__(self):
+        super().__init__()
+        self.Time=0
 def settingChallage(Start,End,Range,Time):
-    tem=challage()
-    tem.Start=Start
-    tem.End=End
-    tem.Range=Range
-    save_The_Time(Time)
-    temStore['temCha']=tem
+    if give_App_Name()=="Cal":
+        tem=challage()
+        tem.Start=Start
+        tem.End=End
+        tem.Range=Range
+        save_The_Time(Time)
+        temStore['temCha']=tem
+    else:
+        tem=Guess()
+        tem.Start=Start
+        tem.End=End
+        tem.Range=Range
+        tem.Time=Time
+        temStore['temGuess']=tem
 def ChallageStartInP():
 
     CQ=temStore['temCha']
-    store(int(CQ.Start),int(CQ.End))
+    store(int(CQ.Start),int(CQ.End),"Challage")
 
     return CQ.Range
 def get_NumberOfQ():
@@ -152,7 +165,9 @@ def get_NumberOfQ():
     return Q.Range
 
 def Store_game_name(name):
+
     temStore["AppName"]=name
+
 def give_App_Name():
     theName=temStore["AppName"]
     return theName
@@ -166,58 +181,211 @@ def StoreHistory(id):
                 if o == give_App_Name():
                     All_content=All_History[o]#take second dict value
                     if len(All_content)==3:#not done
+                        del All_content[0]
+                        current_List=test_print()
+                        del current_List[-1]
+                        All_content.append(current_List)
+                        print(All_History)
+                        print("test if both have 1")
+                        All_History[give_App_Name()] = All_content
+                        print(All_History)
+                        print("test if both have 2")
+                        del History_All_Game[id]
+                        History_All_Game[id] = All_History
+                        exist = True
+
                         break
                     else:#working
 
                         current_List = test_print()
                         del current_List[-1]
-                        print('**********1****::...')
-                        print(current_List)
 
                         All_content.append(current_List)
-                        print('**********2****::...')
-                        print(All_content)
-                        All_History[give_App_Name()]=All_content
-
-                        History_All_Game[id] =All_History
-                        print('**********3****::...')
                         print(All_History)
+                        print("test if both have 2")
+                        print(All_History)
+                        All_History[give_App_Name()]=All_content
+                        print(All_History)
+                        print("test if both have 2")
+                        del History_All_Game[id]
+                        History_All_Game[id] =All_History
+                        exist = True
+
                         break
-            exist=True
+
             break
     if exist==False:#working
-        dict_Tem={}
-        list_Tem=[]
-        current_List=test_print()
+        dict_Tem = {}
+        list_Tem = []
+        current_List = test_print()
         del current_List[-1]
-
         App_name = give_App_Name()
-        print('**********1****::...')
-        print(current_List)
         list_Tem.append(current_List)
-        print('**********2****::...')
-        print(list_Tem)
-        dict_Tem[App_name]=list_Tem
-        History_All_Game[id] = dict_Tem
-        print('**********3****::...')
-        print(dict_Tem)
+
+        haveData = History_All_Game[id]
+
+        if len(haveData) != 0:
+            haveData[give_App_Name()] = list_Tem
+            del History_All_Game[id]
+            History_All_Game[id] = haveData
+        else:
+
+            dict_Tem[App_name] = list_Tem
+            print(History_All_Game[id])
+            print("test")
+            History_All_Game[id] = dict_Tem
 
 
 def give_history_cal(id,GameName):
+    have=False
 
-    dict_IThink=History_All_Game[id] #take first dic value
-    for i in dict_IThink:
-        if i == GameName:
-            The_list=dict_IThink[i]# got two list in here take second dict value
-            print(The_list)
-            return The_list
-    return ""
+    print(History_All_Game[id])
+    for d in History_All_Game:
+        if d== id:
+
+            dict_IThink=History_All_Game[id] #take first dic value
+            for i in dict_IThink:
+                if i == GameName:
+                    The_list=dict_IThink[i]# got two list in here take second dict value
+                    have=True
+                    return The_list
+
+    if have==False:
+        return ""
+
+
+class guess_Number:
+    def init(self):
+        self.Question=0
+        self.User_answer=0
+        self.diff=""
+
+def generate_Guess(start,end,diff):
+
+    generated_num=give_random(start,end)
+    guess=guess_Number()
+    guess.Question=generated_num
+    guess.User_answer=0
+    guess.diff=diff
+    storeE1[str(len(storeE1))]=guess
+
+
+
+def send_guess_num():
+    showcurrent=str(len(storeE1)-1)
+    number=storeE1[showcurrent]
+    return number.Question
+
+
+def send_guess_list_amount():
+    number=len(storeE1)-1
+    return number
+
+def store_answer(answer):
+    count=0
+    del storeE1[str(len(answer)+1)]
+    del storeE1[str(len(answer))]
+    for i in storeE1:
+        value=storeE1[i]
+        if value.User_answer == 0:
+            value.User_answer=answer[count]
+            storeE1[i]=value
+        count+=1
+    #Past work
+   # for i in storeE1:
+
+   #     if storeE1[i].User_answer==0:
+
+     #       storeE1[i].User_answer=answer
+     #       break
+     #   count+=1
+
+
+def storeGuessHistory(id):
+    exist = False
+    for i in History_All_Game:
+        if i == id:
+            All_History = History_All_Game[i]  # take first dict value
+            for o in All_History:
+                if o == give_App_Name():
+                    All_content = All_History[o]  # take second dict value
+                    if len(All_content) == 3:  # done
+                        del All_content[0]
+                        current_List = test_print()
+                        All_content.append(current_List)
+
+
+                        print(All_History)
+                        print("test if both have 1")
+                        All_History[give_App_Name()] = All_content
+
+                        print(All_History)
+                        print("test if both have 2")
+                        del History_All_Game[id]
+                        History_All_Game[id] = All_History
+                        exist = True
+
+                        break
+                    else:  # working
+
+                        current_List = test_print()
+
+
+                        print(All_History)
+                        print("test if both have 1")
+                        All_content.append(current_List)
+
+                        All_History[give_App_Name()] = All_content
+                        print(All_History)
+                        print("test if both have 2")
+                        del History_All_Game[id]
+                        History_All_Game[id] = All_History
+                        exist = True
+
+                        break
+
+            break
+    if exist == False:  # working
+
+        dict_Tem = {}
+        list_Tem = []
+        current_List = test_print()
+        App_name = give_App_Name()
+        list_Tem.append(current_List)
+
+        haveData=History_All_Game[id]
+
+        if len(haveData)!=0:
+            haveData[give_App_Name()]=list_Tem
+            del History_All_Game[id]
+            History_All_Game[id]=haveData
+        else:
+
+            dict_Tem[App_name] = list_Tem
+            print(History_All_Game[id])
+            print("test")
+            History_All_Game[id] = dict_Tem
+
+
+def start_challage_guess():
+    data=temStore['temGuess']
+    generate_Guess(data.Start,data.End,"Challange")
+def give_back_time_guess():
+    data = temStore['temGuess']
+    return data.Time
+def give_back_range_guess():
+    data = temStore['temGuess']
+    return data.Range
+
+
+
 #Ace END
-def checker_history():
-    if len(History_All_Game)!=0:
-        dict_IThink = History_All_Game["checkme"]
-        print(dict_IThink)
-        for i in dict_IThink:
-            if i == "Cal":
-                The_list = dict_IThink[i]  # got two list in here take second dict value
-                print(The_list)
+
+
+
+def sendImgToTem(img):
+    temStore["test1"]=img
+
+def testShowImg():
+    tem=temStore["test1"]
+    return tem

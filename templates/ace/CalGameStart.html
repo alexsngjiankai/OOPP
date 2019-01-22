@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <link rel="stylesheet" type="text/css" href="{{ url_for("static" , filename="style.css")}}">
 <!--<script src="/static/js/countdown.js"></script>-->
-<script>
+
+<body>
+<div id="Ace_Game_Start">
+{% if  whichgame =="Cal" %}
+
+
+
+    <script>
     document.addEventListener("DOMContentLoaded",refreshRun);
 		function refreshRun(){
             document.getElementById("Ace_Game_Start").style.display="block";
@@ -34,29 +41,24 @@
             }
 		}
 </script>
+    {% if checkIfCorrect !=howManyQ%}
 
-
-<body>
-<div id="Ace_Game_Start">
-
-{% if checkIfCorrect !=howManyQ%}
-
-<form method="post">
-<table>
-    <tr><td><h1  class="hide">Q{{ checkIfCorrect }} )</h1></td></tr>
-
-    <tr><td class="Ace_SizeIsFixed"><h1 id="Ace_MoveToRight" class="hide">{{ Q1 }} {{ Signs }} {{ Q2 }}=</h1></td><td><input type="number" name="userA" id="userA" min="1" max="9999"  required value="{{ request.form['userA'] }}"></td></tr>
-</table>
-    <br>
-    <br>
-    <br>
+    <form method="post">
     <table>
-    <tr><td><h1 id="Ace_MoveToRight2">Seconds Left: </h1></td><td><input id="countdown" name="countdown" size="1" value="{{ request.form['countdown'] or taketime }}" readonly></td><td><h1 id="Extra"></h1></td></tr>
+        <tr><td><h1  class="hide">Q{{ checkIfCorrect }} )</h1></td></tr>
+
+        <tr><td class="Ace_SizeIsFixed"><h1 id="Ace_MoveToRight" class="hide">{{ Q1 }} {{ Signs }} {{ Q2 }}=</h1></td><td><input type="number" name="userA" id="userA" min="1" max="9999"  required value="{{ request.form['userA'] }}"></td></tr>
     </table>
-    <h1 id="Ace_MoveToRight" class="Ace_Make_IT_Hover"><input id="Ace_ChangeSize_InCalGameStart" type="submit"  value="Next Q"></h1>
+        <br>
+        <br>
+        <br>
+        <table>
+        <tr><td><h1 id="Ace_MoveToRight2">Seconds Left: </h1></td><td><input id="countdown" name="countdown" size="1" value="{{ request.form['countdown'] or taketime }}" readonly></td><td><h1 id="Extra"></h1></td></tr>
+        </table>
+        <h1 id="Ace_MoveToRight" class="Ace_Make_IT_Hover"><input id="Ace_ChangeSize_InCalGameStart" type="submit"  value="Next Q"></h1>
 
 
-</form>
+    </form>
 
 
 <!--
@@ -72,14 +74,93 @@ then display her again
 -->
 
 
-{% else %}
-    <h1 id="Ace_welldone" >Well done ..</h1>
-<button class="Ace_Make_IT_Hover" ><a id="Ace_ChangeSize_InCalGameStart" href="{{ url_for('results') }}">Results</a></button>
-{% endif %}
-</div>
+    {% else %}
+        <h1 id="Ace_welldone" >Well done ..</h1>
+    <button class="Ace_Make_IT_Hover" ><a id="Ace_ChangeSize_InCalGameStart" href="{{ url_for('results') }}">Results</a></button>
+    {% endif %}
+    </div>
 
-    <h1 id="timeup" >Times up</h1>
-<button id="testing" class="Ace_Make_IT_Hover"><a id="Ace_ChangeSize_InCalGameStart" href="{{ url_for('results') }}">Results</a></button>
+        <h1 id="timeup" >Times up</h1>
+    <button id="testing" class="Ace_Make_IT_Hover"><a id="Ace_ChangeSize_InCalGameStart" href="{{ url_for('results') }}">Results</a></button>
+
+{% elif whichgame=="Guess" %}
+    <script>
+     document.addEventListener("DOMContentLoaded",refreshRun);
+		function refreshRun(){
+
+            document.getElementById("countdown").disabled = false;
+                document.getElementById("hiddenbutton").disabled=false;
+
+            document.getElementById("hiddenbutton").style.display="none";
+
+            var seconds;
+            var temp;
+            countdown();
+            function countdown() {
+                seconds = document.getElementById('countdown').value;
+                seconds = parseInt(seconds, 10);
+            if (seconds == 1) {
+                document.getElementById("hiddenbutton").value="testing";
+                document.getElementById("hiddenbutton").click();
+
+                return;
+            }
+
+
+            seconds--;
+            temp = document.getElementById('countdown');
+            temp.value = seconds;
+            timeoutMyOswego = setTimeout(countdown, 1000);
+            }
+		}
+    </script>
+
+    <div id="DarkBackground">
+{%  if current_list_now != totalQ %}
+    <div>
+        <h1>
+            {{ question }}
+        </h1>
+    </div>
+
+    </div>
+        {{ current_list_now }}
+    {% if diff=="Easy" %}
+    <button ><a id="hiddenbutton" href="{{ url_for('chooseEasy') }}">h1</a></button>
+    {% elif diff=="Normal" %}
+         <button ><a id="hiddenbutton" href="{{ url_for('chooseNormal') }}">h1</a></button>
+    {% elif diff=="Hard" %}
+     <button ><a id="hiddenbutton" href="{{ url_for('chooseHard') }}">h1</a></button>
+    {% elif diff=="Challange" %}
+     <button ><a id="hiddenbutton" href="{{ url_for('challageStart') }}">h1</a></button>
+    {% endif %}
+<input id="countdown" name="countdown" size="1" value="{{ timer }}" readonly>
+    {% else %}
+    <script>
+
+    document.getElementById("countdown").disabled = true;
+    document.getElementById("hiddenbutton").disabled=true;
+
+    </script>
+    <h1>this is the end of the question</h1>
+    <form method="post">
+    <ul>
+
+    {% for i in range(current_list_now) %}
+        <li>
+        <input type="number" name="{{ i }}" min="1" max="99" required value="{{ request.form['{{ i }}'] }}">
+        </li>
+
+    {% endfor %}
+    <input type="submit" placeholder="confirm" >
+
+    </ul>
+     </form>
+
+    {% endif %}
+{% endif %}
+
+
 
 </body>
 

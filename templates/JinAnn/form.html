@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href = " {{ url_for('static', filename = 'Base.css') }}" />
-
+</head>
+<body>
         <nav>
 			<br>
 			<a id='weblogo' href=''>
@@ -15,19 +16,16 @@
 			<a class='link' href="#">Game</a>
 			<a class='link' href="#">Home</a>
 		</nav>
+<br/><br/><br/><br/><br/>
+<div>
+     <form method="post">
+        <label for="username">Username</label>
+        <input name="username" id="username" required>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required>
+        <input type="submit" value="Register">
+    </form>
+</div>
 
-
-<div id="topempty"></div>
-    <h3> Schemes available/You are benefiting from</h3>
-
-        <div>
-            <h2> Scheme 1</h2>
-        </div>
-        <div>
-            <h2> Scheme 2</h2>
-        </div>
-        <div>
-            <h2> Scheme 3</h2>
-        </div>
-
+</body>
 </html>

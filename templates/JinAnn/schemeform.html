@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href = " {{ url_for('static', filename = 'Base.css') }}" />
+
+        <nav>
+			<br>
+			<a id='weblogo' href=''>
+			<img src='/static/Pictures/Logo.PNG' alt='WebPage Logo'/>
+			</a>
+
+			<a class='link' href="#">Scheme</a>
+			<a class='link' href="#">Calendar</a>
+			<a class='link' href="#">Game</a>
+			<a class='link' href="#">Home</a>
+		</nav>
+
+
+<div id="topempty"></div>
+
+       <div class="form">
+           <form method = 'post'>
+               <label for="age">Age</label>
+                 <input type='number' name="age" id="age" value =' {{request.form["age"]}} ' required>
+               <label for="income">Monthly Income</label>
+                 <input type='number' name="income" id="income" value =' {{request.form["income"]}} ' required>
+               <input type="submit" value="Search">
+
+           </form>
+
+       </div>
+
+{% if age >= 50 %}
+    <div> Scheme 1</div>
+    {%  endif %}
+{% if age >= 50 and income <= 2000 %}
+    <div> Scheme 2</div>
+    {%  endif %}
+
+</html>

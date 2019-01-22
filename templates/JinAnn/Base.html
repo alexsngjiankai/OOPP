@@ -1,25 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
 
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href = " {{ url_for('static', filename = 'Base.css') }}" />
+<!doctype html>
+<title>{% block title %}{% endblock %} - Flaskr</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='Base.css') }}">
+<nav>
+  <h1>Flaskr</h1>
+  <ul>
+    {% if session['id'] %}
+        <li><a id='weblogo' href=''><img src='' alt='WebPage Logo'/></a>
 
-        <nav>
-			<br>
-			<a id='weblogo' href=''>
-			<img src='' alt='WebPage Logo'/>
-			</a>
-
-			<a class='link' href="#">Scheme</a>
-			<a class='link' href="#">Calendar</a>
-			<a class='link' href="#">Game</a>
-			<a class='link' href="#">Home</a>
-		</nav>
-
-
-<div id="topempty"></div>
-
-
-</html>
-
-
+			<li><a class='link' href="#">Scheme</a>
+			<li><a class='link' href="#">Calendar</a>
+			<li><a class='link' href="#">Game</a>
+			<li><a class='link' href="#">Home</a>
+      <li><span>{{ session['user_name'] }}</span>
+      <li><a href="{{ url_for('logout') }}">Log Out</a>
+    {% else %}
+      <li><a href="{{ url_for('register') }}">Register</a>
+      <li><a href="{{ url_for('login') }}">Log In</a>
+    {% endif %}
+  </ul>
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% block content %}{% endblock %}
+</section>

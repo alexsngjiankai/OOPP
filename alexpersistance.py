@@ -43,6 +43,7 @@ def create_one_med(name,amount,description):
     return med
 
 def return_list_med(user):
+    print("test1 inside list med ")
     for i in meds:
         if i ==user:
             return meds[i]

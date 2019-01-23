@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+
+<title>{% block title %}{% endblock %} </title>
+<link rel="stylesheet" href="{{ url_for('static', filename='testStyle.css') }}">
+<nav>
+  <h1>Logo/AppName</h1>
+  <ul>
+    {% if session['id'] %}
+        <li><a href="{{ url_for('logout') }}">Home</a></li>
+        <li><a href="{{ url_for('logout') }}">rub</a></li>
+        <li><a href="{{ url_for('logout') }}">tester</a></li>
+        <li><a href="{{ url_for('goToGameSelection') }}">Game</a></li>
+        <li><span>{{ session['user_name'] }}</span></li>
+        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+    {% else %}
+        <li><a href="{{ url_for('register') }}">Register</a></li>
+        <li><a href="{{ url_for('login') }}">Log In</a></li>
+    {% endif %}
+  </ul>
+</nav>
+
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% block content %}{% endblock %}
+</section>

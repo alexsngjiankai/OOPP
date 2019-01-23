@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="{{ url_for("static" , filename="style.css")}}">
+{% extends 'testerNavBar.html' %}
+<h1>{% block title %}CalculatorGame{% endblock %}</h1>
 <!--<script src="/static/js/countdown.js"></script>-->
-
-<body>
+{% block content %}
 <div id="Ace_Game_Start">
 {% if  whichgame =="Cal" %}
 
@@ -12,6 +11,9 @@
     document.addEventListener("DOMContentLoaded",refreshRun);
 		function refreshRun(){
             document.getElementById("Ace_Game_Start").style.display="block";
+
+
+            document.getElementById("AppearOnlyWhen").style.display="none";
             document.getElementById("testing").style.display="none";
             document.getElementById("timeup").style.display="none";
             var seconds;
@@ -25,8 +27,8 @@
                 document.getElementById("testing").style.display="block";
                 document.getElementById("Extra").innerText="0";
                 document.getElementById("timeup").style.display="block";
-
-                document.getElementById("Ace_Game_Start").style.display="none";
+                document.getElementById("Ace_Disapper").style.display="none";
+                document.getElementById("AppearOnlyWhen").style.display="block";
                 return;
             }else if (seconds==6){
 
@@ -42,10 +44,10 @@
 		}
 </script>
     {% if checkIfCorrect !=howManyQ%}
-
+    <div id="Ace_Disapper">
     <form method="post">
     <table>
-        <tr><td><h1  class="hide">Q{{ checkIfCorrect }} )</h1></td></tr>
+        <tr><td><h1  class="hide">Q{{ checkIfCorrect }} ) / Q </h1></td></tr>
 
         <tr><td class="Ace_SizeIsFixed"><h1 id="Ace_MoveToRight" class="hide">{{ Q1 }} {{ Signs }} {{ Q2 }}=</h1></td><td><input type="number" name="userA" id="userA" min="1" max="9999"  required value="{{ request.form['userA'] }}"></td></tr>
     </table>
@@ -59,30 +61,17 @@
 
 
     </form>
-
-
-<!--
-
-<h1 id="countdown" >180</h1>
-
-<h1 id="countdown" >180</h1><h1 id="Extra"></h1>
-put number input disabled it
-    <textarea name="body" id="body"></textarea>
-take the number store it with class
-then display her again
-
--->
-
-
+</div>
     {% else %}
+
         <h1 id="Ace_welldone" >Well done ..</h1>
     <button class="Ace_Make_IT_Hover" ><a id="Ace_ChangeSize_InCalGameStart" href="{{ url_for('results') }}">Results</a></button>
     {% endif %}
-    </div>
 
+    <div id="AppearOnlyWhen">
         <h1 id="timeup" >Times up</h1>
     <button id="testing" class="Ace_Make_IT_Hover"><a id="Ace_ChangeSize_InCalGameStart" href="{{ url_for('results') }}">Results</a></button>
-
+</div>
 {% elif whichgame=="Guess" %}
     <script>
      document.addEventListener("DOMContentLoaded",refreshRun);
@@ -115,7 +104,7 @@ then display her again
 		}
     </script>
 
-    <div id="DarkBackground">
+    <h1>Remember the number</h1>
 {%  if current_list_now != totalQ %}
     <div>
         <h1>
@@ -123,7 +112,7 @@ then display her again
         </h1>
     </div>
 
-    </div>
+
         {{ current_list_now }}
     {% if diff=="Easy" %}
     <button ><a id="hiddenbutton" href="{{ url_for('chooseEasy') }}">h1</a></button>
@@ -144,23 +133,18 @@ then display her again
     </script>
     <h1>this is the end of the question</h1>
     <form method="post">
-    <ul>
 
     {% for i in range(current_list_now) %}
-        <li>
-        <input type="number" name="{{ i }}" min="1" max="99" required value="{{ request.form['{{ i }}'] }}">
-        </li>
+        <p class="Ace_padding_left">
+        <input type="number" name="{{ i }}" min="1" max="200" required value="{{ request.form['{{ i }}'] }}">
+        </p>
 
     {% endfor %}
     <input type="submit" placeholder="confirm" >
 
-    </ul>
      </form>
 
     {% endif %}
 {% endif %}
-
-
-
-</body>
-
+    </div>
+{% endblock %}

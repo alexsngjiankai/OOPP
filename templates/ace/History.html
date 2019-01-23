@@ -1,68 +1,100 @@
 <!DOCTYPE html>
 
-<link rel="stylesheet" type="text/css" href="{{ url_for("static" , filename="style.css")}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for("static" , filename="testStyle.css")}}">
 <html lang="en">
-<body id="bodyHistory">
+<body id="bodyHistory" >
 <h1>History</h1>
 <br>
 <br>
 <div class="History_box">
     <div id="histtory_block_cal">
     <h1>Calculator History</h1>
-    <ul id="historyOrder">
 {% if history_cal!="" %}
+
+
+
+      <table id="table_guess">
+    <tr>
     {% for i in history_cal %}
-        <li >
-        <p>{{   i[-1]['diff'] }}</p>
+        <th>
+    {{   i[-1]['diff'] }}
+        </th>
+    {% endfor %}
+        </tr>
+    <tr>
+    {% for i in history_cal %}
+    <!--    <li >-->
+        <td>
         {% for u in i %}
 
-            <p>{{ u['EQ1'] }} {{u['S'] }} {{ u['EQ2'] }}={{ u['U'] }}  ans:{{ u['A']  }}</p>
+             <p>{{ u['EQ1'] }} {{u['S'] }} {{ u['EQ2'] }}={{ u['U'] }}  ans:{{ u['A']  }}</p>
             {% if u["C"]=="Incorrect" %}
            <h1 id="Ace_Incorrect">{{ u['C'] }}</h1>
             {% else %}
                <h1 id="Ace_Correct">{{ u['C'] }}</h1>
             {% endif %}
-
         {% endfor %}
-          </li>
-
-
+          <!--</li>-->
+        </td>
     {% endfor %}
-{% else %}
-<h1>you do not have any history for calculator game</h1>
-    <br>
-<h1>Play the game now</h1>
+    </tr>
+    </table>
+    {% else %}
+    <h1>you do not have any history for calculator game</h1>
+        <br>
+    <h1>Play the game now</h1>
+
+
 {% endif %}
 
-
-    </ul>
     </div>
 
     <div id="history_block_Guess">
     <h1>Guess The Number History</h1>
-    <ul id="historyOrder">
+    <!--<ul id="historyOrder">-->
+
 {% if history_Guess!="" %}
+
+    <table id="table_guess">
+    <tr>
     {% for i in history_Guess %}
-        <li >
-            <p>{{   i[-1]['diff'] }}</p>
+        <th>
+    {{   i[-1]['diff'] }}
+        </th>
+    {% endfor %}
+        </tr>
+    <tr>
+    {% for i in history_Guess %}
+    <!--    <li >-->
+        <td>
         {% for u in i %}
 
             <p>Guess Number:{{ u['Question'] }} Your answer:{{ u["User_answer"] }}</p>
+             {% if u["correction"]=="Incorrect" %}
+                <h1 id="Ace_Incorrect">{{ u['correction'] }}</h1>
+            {% else %}
+               <h1 id="Ace_Correct">{{ u['correction'] }}</h1>
+            {% endif %}
 
         {% endfor %}
-          </li>
-
-
+          <!--</li>-->
+        </td>
     {% endfor %}
+    </tr>
+    </table>
 {% else %}
 <h1>you do not have any history for Guess_The_Number game</h1>
     <br>
 <h1>Play the game now</h1>
 {% endif %}
-
-
-    </ul>
+    <!--</ul>-->
     </div>
+<br>
+<br>
+         <a id="Backbutton" href="{{ url_for('goToGameSelection') }}">Back</a>
+<br>
+<br><br>
+<br>
 
 </div>
 </body>

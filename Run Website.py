@@ -200,17 +200,18 @@ def logout():
 
 @app.route('/gameSelection')
 def goToGameSelection():#step1
-    session['id']="testing"
+    session['id']="fish"
     return render_template("ace/game_Selection.html")
 
 
-@app.route('/calculatorGame')#step2
+@app.route('/CalculationGame')#step2
 def goToCalculator():
     delete_All()
     save_The_Time(180)
     Store_game_name("Cal")
     return render_template("ace/calculatorGame.html")
-@app.route('/calculatorGame/Easy', methods=('GET', 'POST'))
+
+@app.route('/Game/Easy', methods=('GET', 'POST'))
 def chooseEasy():
 
 
@@ -258,7 +259,7 @@ def chooseEasy():
 
             whichgame=give_App_Name()
             diff = 'Easy'
-            generate_Guess(0,99,diff)
+            generate_Guess(1,99,diff)
             question=send_guess_num()
             timer=10
             totalQ=5
@@ -289,8 +290,8 @@ def chooseEasy():
             return render_template("ace/CalGameStart.html",whichgame=whichgame,question=question,timer=timer,totalQ=totalQ,current_list_now=current_list_now,diff=diff)
 
 
-@app.route('/calculatorGame/Normal', methods=('GET', 'POST'))
-def chooseNormal():#qwe
+@app.route('/Game/Normal', methods=('GET', 'POST'))
+def chooseNormal():
     if give_App_Name() == "Cal":
         #cal=diffcuity("calculatorGame",diff)
         E1 = 25
@@ -329,7 +330,7 @@ def chooseNormal():#qwe
     elif give_App_Name() == "Guess":
         whichgame = give_App_Name()
         diff = 'Normal'
-        generate_Guess(0, 99,diff)
+        generate_Guess(1, 99,diff)
         question = send_guess_num()
         timer = 10
         totalQ = 8
@@ -351,13 +352,14 @@ def chooseNormal():#qwe
             else:
 
                 store_answer(testing_list)
-                print(testing_list)
+
+
                 return redirect(url_for('results'))
 
         return render_template("ace/CalGameStart.html", whichgame=whichgame, question=question, timer=timer,
                                totalQ=totalQ, current_list_now=current_list_now,diff=diff)
 
-@app.route('/calculatorGame/Hard', methods=('GET', 'POST'))
+@app.route('/Game/Hard', methods=('GET', 'POST'))
 def chooseHard():
     if give_App_Name() == "Cal":
         #cal=diffcuity("calculatorGame",diff)
@@ -397,7 +399,7 @@ def chooseHard():
     elif give_App_Name() == "Guess":
         whichgame = give_App_Name()
         diff='Hard'
-        generate_Guess(0, 99,diff)
+        generate_Guess(1, 99,diff)
         question = send_guess_num()
         timer = 5
         totalQ = 10
@@ -419,13 +421,14 @@ def chooseHard():
             else:
 
                 store_answer(testing_list)
-                print(testing_list)
+
+
                 return redirect(url_for('results'))
 
         return render_template("ace/CalGameStart.html", whichgame=whichgame, question=question, timer=timer,
                                totalQ=totalQ, current_list_now=current_list_now,diff=diff)
 
-@app.route("/calculatorGame/Challage" , methods=('GET', 'POST'))
+@app.route("/Game/Challage" , methods=('GET', 'POST'))
 def challage_All():
     app_name=give_App_Name()
     if give_App_Name()=="Cal":
@@ -441,7 +444,7 @@ def challage_All():
                 flash(error)
             else:
                 settingChallage(UStart,UEnd,URange,UTime)
-                return redirect(url_for('challageStart'))
+                return redirect(url_for('StartingChallenge'))
 
             # if not UAns:
 
@@ -461,13 +464,13 @@ def challage_All():
                 flash(error)
             else:
                 settingChallage(UStart, UEnd, URange, UTime)
-                return redirect(url_for('challageStart'))
+                return redirect(url_for('StartingChallenge'))
 
 
 
         return render_template("ace/Challage.html",app_name=app_name)
 
-@app.route("/calculatorGame/Challage/GO" , methods=('GET', 'POST'))
+@app.route("/Game/Challenge/running" , methods=('GET', 'POST'))
 def challageStart():
     if give_App_Name()=="Cal":
         tomtom = test_print()
@@ -486,7 +489,7 @@ def challageStart():
                 save_The_Time(int(countingdown))
                 storeUserAnswer(UAns)  # store all the 10 + 10
             return redirect(url_for('challageStart'))
-        range=""
+
 
         if total==0:
             ChallageStartInP()
@@ -508,8 +511,9 @@ def challageStart():
         start_challage_guess()
         question = send_guess_num()
         timer = give_back_time_guess()
-        totalQ = give_back_range_guess()
+        totalQ = int(give_back_range_guess())
         current_list_now = send_guess_list_amount()
+        diff="Challange"
         if request.method == 'POST':
             count = 0
             testing_list = []
@@ -527,14 +531,33 @@ def challageStart():
             else:
 
                 store_answer(testing_list)
-                print(testing_list)
+
+                return redirect(url_for('results'))
+
+            ount = 0
+            testing_list = []
+
+            for i in range(totalQ):
+                test = request.form[str(count)]
+                testing_list.append(test)
+                count += 1
+
+            error = None
+            # if not UAns:
+            #   error = 'Number is required.'
+            if error is not None:
+                flash(error)
+            else:
+
+                store_answer(testing_list)
+
                 return redirect(url_for('results'))
 
         return render_template("ace/CalGameStart.html", whichgame=whichgame, question=question, timer=timer,
-                               totalQ=totalQ, current_list_now=current_list_now)
+                               totalQ=totalQ, current_list_now=current_list_now,diff=diff)
 
 
-@app.route("/calculatorGame/test/results")
+@app.route("/Game/results")
 def results():
     #testIfITWorks=test_print()
     if give_App_Name()=="Cal":
@@ -578,7 +601,39 @@ def GotoGuess():
 
 
 
+@app.route("/startingEasy")
+def StartingEasy():
+    App_name = give_App_Name()
 
+    return render_template("Ace/StartEasyButton.html",App_name=App_name)
+
+@app.route("/startingNormal")
+def StartingNormal():
+    App_name = give_App_Name()
+
+    return render_template("Ace/NormalStartButton.html",App_name=App_name)
+
+@app.route("/startingHard")
+def StartingHard():
+    App_name = give_App_Name()
+
+    return render_template("Ace/HardStartButtton.html",App_name=App_name)
+
+@app.route("/startingChallenge")
+def StartingChallenge():
+    if give_App_Name() =="Cal":
+        App_name = give_App_Name()
+
+        #need add a lot more /// no statics
+        taketime = give_Back_Time()
+        howManyQ = int(get_NumberOfQ())
+        return render_template("Ace/ChallengeStartButton.html",App_name=App_name,taketime=taketime,howManyQ=howManyQ)
+
+    elif give_App_Name()=="Guess":
+        App_name = give_App_Name()
+        timer = give_back_time_guess()
+        totalQ = int(give_back_range_guess())
+        return render_template("Ace/ChallengeStartButton.html", App_name=App_name, timer=timer,totalQ=totalQ)
 
 
 #=======================================================================================================================testting

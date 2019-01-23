@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<link rel="stylesheet" type="text/css" href="{{ url_for("static" , filename="style.css")}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for("static" , filename="testStyle.css")}}">
 
 <body id="Ace_body">
 <div id="Ace_Results">
@@ -34,7 +34,11 @@
     {% for i in tomtom %}
 
     <h1>{{ i["Question"]}} your answer {{ i["User_answer"] }}</h1>
-
+       {% if i["correction"]=="Incorrect" %}
+       <h1 id="Ace_Incorrect">{{ i['correction'] }}</h1>
+        {% else %}
+           <h1 id="Ace_Correct">{{ i['correction'] }}</h1>
+       {% endif %}
 
     {% endfor%}
 {% endif %}

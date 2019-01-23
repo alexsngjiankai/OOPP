@@ -1,0 +1,37 @@
+
+{% extends 'testerNavBar.html' %}
+
+{% block content %}
+<div id="ButtonToStartCss">
+    <br>
+    <br>
+{% if App_name=="Cal" %}
+    <h1 >Calculation Game Easy mode</h1>
+    <h1 class="AlittlePaddingToTheLeft">Total Qns : 10</h1>
+    <h1 class="AlittlePaddingToTheLeft">Total Time to complete all 10 question is : 180s</h1>
+
+
+
+    <span><a href="{{ url_for('chooseEasy') }}">Start</a></span>
+
+       <ul id="BackButtonWillFloatRight">
+    <li><a id="Backbutton" href="{{ url_for('goToCalculator') }}">Back</a></li>
+
+     </ul>
+
+{% elif App_name=="Guess" %}
+   <h1 >Remember the number Game Easy mode</h1>
+    <h1>Total Qns : 5</h1>
+    <h1>Total time between each question is : 10s</h1>
+
+
+    <h1>Press the start button to start the game</h1>
+    <span><a href="{{ url_for('chooseEasy') }}">Start</a></span>
+
+       <ul id="BackButtonWillFloatRight">
+    <li><a id="Backbutton" href="{{ url_for('GotoGuess') }}">Back</a></li>
+
+     </ul>
+{% endif %}
+</div>
+{% endblock %}

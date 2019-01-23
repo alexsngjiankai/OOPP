@@ -1,7 +1,7 @@
-<!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="{{ url_for("static" , filename="style.css")}}">
+{% extends 'testerNavBar.html' %}
 
-<body id="Ace_body">
+{% block content %}
+    <div id="Ace_body">
 <a href="{{  url_for('history') }}">History</a>
 <br>
 <br>
@@ -15,7 +15,9 @@
             <br>
             <br>
             <br>
-            <a id="Ace_Guess_Number" href="{{ url_for('GotoGuess') }}">Guess the number</a>
+            <a id="Ace_Guess_Number" href="{{ url_for('GotoGuess') }}">Remember the </a>
+             <a id="Ace_Guess_NumberSub" href="{{ url_for('GotoGuess') }}">number</a>
+
 
         </div>
 
@@ -23,10 +25,9 @@
                 <br>
                <br>
                <br>
-           <a id="Ace_calculator_title" href="{{ url_for('goToCalculator') }}"> Calulator</a>
+           <a id="Ace_calculator_title" href="{{ url_for('goToCalculator') }}"> Calculation</a>
 
         </div>
     </div>
-
-</body>
-
+</div>
+{% endblock %}

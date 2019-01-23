@@ -2,8 +2,8 @@ from flask import *
 from persistence1 import *
 from persistence import *
 import functools
-#from alexpersistance import *
-#from medication import *
+from alexpersistance import *
+from medication import *
 #from datetime import datetime
 #rr
 app = Flask(__name__)

@@ -12,15 +12,12 @@ def add_medinfo(user,name, amount, description):
 #=====================================For new users
     exist=False
     for i in meds:
-        print(i)
+
         if i == user:
             med = create_one_med(name, amount, description)
-            print(med)
-
             list=meds[i]
-            print(list)
             list.append(med)
-            print(list)
+
             del meds[i]
             meds[i] = list
             exist=True
@@ -43,7 +40,6 @@ def create_one_med(name,amount,description):
     return med
 
 def return_list_med(user):
-    print("test1 inside list med ")
     for i in meds:
         if i ==user:
             return meds[i]

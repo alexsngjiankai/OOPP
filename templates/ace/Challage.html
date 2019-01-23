@@ -1,29 +1,30 @@
-<!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="{{ url_for("static" , filename="testStyle.css")}}">
+{% extends 'JinAnn/Base.html' %}
+{% block content %}
 
-<body id="Ace_body" class="being_Lazy">
-
+    <div id="ChallengeBody">
 {% if app_name=="Cal" %}
     <h1>Setting challenge for Calculation game</h1><br><br>
-<div id="Challage_BOX">
+
+
+<div id="Ace_Challage_BOX">
 
 <form method="post">
 
     <h3 class="LabelForChallage">Starting number range to Ending Number Range</h3>
+<br>
+  <table id="Ace_Challage_body">
 
-  <table id="Challage_body">
-
-        <tr><td><label class="LabelForChallage">Starting number range:</label></td><td><input type="number" id="Ace_Start" name="Start" min="1" max="25" value="{{ request.form['Start'] }}" required></td></tr>
-        <tr><td><label class="LabelForChallage">Ending Number range:</label></td><td> <input type="number" id="Ace_End" name="End" min="26" max="999" value="{{ request.form['End'] }}" required></td></tr>
-        <tr><td> <label class="LabelForChallage">Amount of Question:</label></td><td><input type="number" id="Ace_Range" name="Range" min="5" max="100" value="{{ request.form['Range'] }}" required></td></tr>
-        <tr><td><label class="LabelForChallage">Countdown time in seconds:</label></td><td><input type="number" id="Ace_Time" name="Time" min="10" max="300" value="{{ request.form['Time'] }}"  required></td></tr>
+        <tr><td><label class="Ace_LabelForChallage">Starting number range:</label></td><td><input type="number" id="Ace_Start" width="100px" name="Start" min="1" max="25" class="Ace_InputWidth" value="{{ request.form['Start'] }}" required></td></tr>
+        <tr><td><label class="Ace_LabelForChallage">Ending Number range:</label></td><td> <input type="number" id="Ace_End" width="100px" name="End" min="26" max="999" class="Ace_InputWidth" value="{{ request.form['End'] }}" required></td></tr>
+        <tr><td> <label class="Ace_LabelForChallage">Amount of Question:</label></td><td><input type="number" id="Ace_Range" width="100px" name="Range" min="5" max="100" class="Ace_InputWidth" value="{{ request.form['Range'] }}" required></td></tr>
+        <tr><td><label class="Ace_LabelForChallage">Countdown time in seconds:</label></td><td><input type="number" id="Ace_Time" width="100px" name="Time" min="10" max="300" class="Ace_InputWidth" value="{{ request.form['Time'] }}"  required></td></tr>
 
     </table>
-    <input id="Challage_Submit" type="submit" value="Start Challage">
+    <input id="Ace_Challage_Submit" type="submit" value="Start Challage">
 
     </form>
-    <ul id="Challage_Return">
-    <li><a href="{{ url_for('goToCalculator') }}">Return</a></li>
+    <ul id="Ace_Challage_Return">
+    <li><a id="Ace_paddingforStartButton" href="{{ url_for('goToCalculator') }}">Back</a></li>
     </ul>
 
     <!-- tmr will contiune do css will put button and a<-- with paddding -->
@@ -32,26 +33,27 @@
 {% elif app_name=="Guess" %}
 
    <h1>Setting challenge for Remember the number</h1><br><br>
-<div id="Challage_BOX">
+<div id="Ace_Challage_BOX">
 
 <form method="post">
-    <table id="Challage_body">
-        <tr><td><label class="LabelForChallage">Starting number range:</label></td><td><input type="number" id="Ace_Start" name="Start" min="1" max="100" value="{{ request.form['Start'] }}" required></td></tr>
-        <tr><td><label class="LabelForChallage">Ending Number range:</label></td><td> <input type="number" id="Ace_End" name="End" min="25" max="200" value="{{ request.form['End'] }}" required></td></tr>
-        <tr><td> <label class="LabelForChallage">Amount of Question:</label></td><td><input type="number" id="Ace_Range" name="Range" min="2" max="15" value="{{ request.form['Range'] }}" required></td></tr>
-        <tr><td><label class="LabelForChallage">Countdown time in seconds:</label></td><td><input type="number" id="Ace_Time" name="Time" min="2" max="20" value="{{ request.form['Time'] }}"  required></td></tr>
+    <table id="Ace_Challage_body">
+        <tr><td><label class="Ace_LabelForChallage">Starting number range:</label></td><td><input type="number" width="100px" class="Ace_InputWidth" id="Ace_Start" name="Start" min="1" max="100"  value="{{ request.form['Start'] }}" required></td></tr>
+        <tr><td><label class="Ace_LabelForChallage">Ending Number range:</label></td><td> <input type="number" width="100px" class="Ace_InputWidth" id="Ace_End" name="End" min="25" max="200"  value="{{ request.form['End'] }}" required></td></tr>
+        <tr><td> <label class="Ace_LabelForChallage">Amount of Question:</label></td><td><input type="number" width="100px" class="Ace_InputWidth" id="Ace_Range" name="Range" min="2" max="15"  value="{{ request.form['Range'] }}" required></td></tr>
+        <tr><td><label class="Ace_LabelForChallage">Countdown time in seconds:</label></td><td><input type="number" width="100px" class="Ace_InputWidth" id="Ace_Time" name="Time" min="2" max="20"  value="{{ request.form['Time'] }}"  required></td></tr>
 
 
 
     </table>
-    <input id="Challage_Submit" type="submit" value="Start Challage">
+    <input id="Ace_Challage_Submit" type="submit" value="Start Challage">
 </form>
-    <ul id="Challage_Return">
-    <li><a href="{{ url_for('GotoGuess') }}">Return</a></li>
+    <ul id="Ace_Challage_Return">
+    <li><a id="Ace_paddingforStartButton" href="{{ url_for('GotoGuess') }}">Back</a></li>
     </ul>
     </div>
 {% endif %}
-</body>
+    </div>
+{% endblock %}
 <!--
 <table>
     <tr><td></td><td></td></tr>

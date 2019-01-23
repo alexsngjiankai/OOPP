@@ -1,14 +1,12 @@
-<!DOCTYPE html>
+{% extends 'JinAnn/Base.html' %}
+{% block content %}
 
-<link rel="stylesheet" type="text/css" href="{{ url_for("static" , filename="testStyle.css")}}">
-
-<body id="Ace_body">
 <div id="Ace_Results">
 <h1 >Results</h1>
 
 
 {% if App_name=="Cal" %}
-    <div class="For_Results_All">
+    <div class="Ace_For_Results_All">
 {% for i in tomtom %}
     {% if i['U']!=0 %}
    <h1 id="Ace_QSpam">{{ i['EQ1'] }} {{i['S'] }} {{ i['EQ2'] }}={{ i['U'] }}  ans:{{ i['A'] }}
@@ -46,4 +44,4 @@
 <button class="Ace_Make_IT_Hover" id="wanna_make_it_to_the_right"><a id="Ace_ChangeSize_InCalGameStart" href="{{ url_for('goToGameSelection') }}">Back to game select</a></button>
 
 </div>
-</body>
+{% endblock %}

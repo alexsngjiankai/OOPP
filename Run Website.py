@@ -87,7 +87,7 @@ def medList():
 
 
 
-
+@app.route('/tester')
 def login_required(view):
     @functools.wraps(view)
     def wrapped_view(**kwargs):
@@ -125,6 +125,7 @@ def login():
             if user is None:
                 error = 'Wrong username and password'
             else:
+
                 session['id'] = user.get_id()
                 session['user_name'] = user.get_username()
                 return redirect(url_for('index'))
@@ -200,7 +201,6 @@ def logout():
 
 @app.route('/gameSelection')
 def goToGameSelection():#step1
-    session['id']="fish"
     return render_template("ace/game_Selection.html")
 
 
@@ -564,7 +564,7 @@ def results():
         if len(test_print())!=0:
             tomtom=test_print()
             checkIfCorrect = checkrange()
-            id=session["id"]
+            id=session["user_name"]
             App_name=give_App_Name()
             StoreHistory(id)
             delete_All()
@@ -573,7 +573,7 @@ def results():
         else:
             return render_template("ace/maybe_combine.html")
     elif give_App_Name() == "Guess":
-        id=session["id"]
+        id=session["user_name"]
 
         App_name=give_App_Name()
         tomtom = test_print()
@@ -585,7 +585,7 @@ def results():
 
 @app.route("/History")
 def history():
-    id = session["id"]
+    id = session["user_name"]
 
     history_cal=give_history_cal(id,"Cal")
 

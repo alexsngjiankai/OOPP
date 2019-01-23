@@ -1,30 +1,36 @@
 
 <!doctype html>
-<title>{% block title %}{% endblock %} - Flaskr</title>
+<title>{% block title %}{% endblock %}</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='Base.css') }}">
 <nav>
-
-  <ul>
     {% if session['id'] %}
-        <li class="logo"><a id='weblogo' href=''><img src='' alt='WebPage Logo'/></a>
 
-			<li><a class='link' href="#">Scheme</a>
-			<li><a class='link' href="#">Calendar</a>
-			<li><a class='link' href="#">Game</a>
-			<li><a class='link' href="#">Home</a>
+        <span class="logo"><a id='weblogo' href=''><img src='' alt='WebPage Logo'/></a></span>
+        <ul id="base_ul">
+        <li><a class='link' href="{{ url_for('logout') }}">Home</a></li>
+        <li><a class='link' href="{{ url_for('logout') }}">Scheme</a></li>
+        <li><a class='link' href="{{ url_for('logout') }}">Calendar</a></li>
+        <li><a class='link' href="{{ url_for('goToGameSelection') }}">Game</a></li>
+        <li><a class='link' href="{{ url_for('logout') }}">Log Out</a></li>
 
-      <li><a href="{{ url_for('logout') }}">Log Out</a>
-        <li>{{ session['user_name'] }}
+        </ul>
+
+        <span id="ID_name">ID : {{ session['user_name'] }} </span>
+
     {% else %}
+
+     <ul id="base_ul">
       <li><a href="{{ url_for('register') }}">Register</a>
       <li><a href="{{ url_for('login') }}">Log In</a>
+          </ul>
     {% endif %}
-  </ul>
+
 </nav>
-<div id="topempty"></div>
 <section class="content">
   <header>
     {% block header %}{% endblock %}
   </header>
+
   {% block content %}{% endblock %}
+
 </section>

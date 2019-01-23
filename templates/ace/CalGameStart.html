@@ -1,4 +1,5 @@
-{% extends 'testerNavBar.html' %}
+{% extends 'JinAnn/Base.html' %}
+
 <h1>{% block title %}CalculatorGame{% endblock %}</h1>
 <!--<script src="/static/js/countdown.js"></script>-->
 {% block content %}
@@ -64,7 +65,7 @@
 </div>
     {% else %}
 
-        <h1 id="Ace_welldone" >Well done ..</h1>
+        <h1 id="Ace_welldone" >Well done</h1>
     <button class="Ace_Make_IT_Hover" ><a id="Ace_ChangeSize_InCalGameStart" href="{{ url_for('results') }}">Results</a></button>
     {% endif %}
 
@@ -136,7 +137,7 @@
 
     {% for i in range(current_list_now) %}
         <p class="Ace_padding_left">
-        <input type="number" name="{{ i }}" min="1" max="200" required value="{{ request.form['{{ i }}'] }}">
+        <input type="number" name="{{ i }}" min="1" max="200" required value="{{ request.form['{{ i }}'] }}" >
         </p>
 
     {% endfor %}

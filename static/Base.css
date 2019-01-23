@@ -1,49 +1,64 @@
 html{
 	background-color:grey;
+    background-image: url(https://www.christianimages123.com/wp-content/uploads/2014/06/blue-green-modern-background-300x225.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 *{
 	margin:0px;
 	padding:0px;
 }
 body{
-	margin:auto;
+    margin:auto;
+
 }
+
 nav{
-    position: fixed;
+    text-align: center;
+    position: relative;
     width:100%;
-    height:70px;
+    height:85px;
     background-color: rgba(0,0,0,.5);
     z-index:99;
 }
 nav img{
     width:20px;
     height:20px;
-
-
 }
-
-
-
 nav li{
-
+    border:2px solid white;
     display:inline-block;
-
+  margin-left: 20px;
+        margin-right: 20px;
+    margin-top:10px;
 }
+
+#ID_name {
+    position: absolute;
+  bottom: 1px;
+  right: 10%;
+  font-size: 18px;
+    color:lightsalmon;
+}
+
 nav a {
-	float:right;
-	padding-right:50px;
+	padding: 10px 40px 10px 40px;
     text-decoration:none;
     color: #fff;
-    margin-left: 20px;
+
     line-height:50px;
 	font-size: 110%
 }
-
-nav a:hover{
-
-	color:red;
+#base_ul{
+    float:right;
 }
+nav li:hover{
 
+	background-color: grey;
+}
+nav .logo {
+    float: left;
+}
 #weblogo {
 	 float:left;
  }
@@ -61,6 +76,379 @@ div h2 {
 
     padding-left:15px;
     color: white;
+}
+
+
+
+
+/*
+Ace Ended
+*/
+
+#Ace_body{
+    justify-content: center;
+    background-color: yellow;
+}
+#Ace_selector{
+
+    margin:auto;
+    width:1000px;
+    background-color: green;
+    text-align: center;
+    height:500px;
+}
+
+#Ace_headTitle{
+    color:yellow;
+    font-size: 50px;
+}
+
+#Ace_calculator{
+
+    float:right;
+    background-color: red;
+    border: 2px solid;
+    border-color: black;
+    width:40%;
+    height:400px;
+    text-align: center;
+    margin-right:5%;
+}
+#Ace_GuessTheNumber{
+ background-color: red;
+    float:left;
+    border: 2px solid;
+    border-color: black;
+    width:40%;
+    height:400px;
+    margin-left:5%;
+    text-align: center;
+
+}
+#Ace_GuessTheNumber:hover{
+    background-color: lightgray;
+opacity: 10%;
 
 
 }
+#Ace_calculator_title{
+    color:black;
+    padding: 100% 20% 70% 70px;
+    font-size:60px;
+    text-decoration: none;
+}
+#Ace_calculator:hover{
+    background-color: lightgray;
+    opacity: 10%;
+}
+#Ace_guessNumber_title{
+   padding-top:30%;
+
+}
+#Ace_chooseDiffcuty{
+    list-style-type: none;
+}
+
+#Ace_chooseDiffcuty li  {
+display:inline-block;
+    margin-right:10px;
+    margin-left:10px;
+    padding-left:10px;
+padding-right:10px;
+    border: 2px white solid;
+}
+#Ace_chooseDiffcuty li a{
+    text-decoration: none;
+    font-size:50px;
+     color:black
+}
+#Ace_chooseDiffcuty li:hover{
+    background-color:lightgray;
+    opacity: 10%;
+
+}
+#Ace_challage{
+    list-style-type: none;
+}
+#Ace_challage li{
+    display:inline-block;
+        padding-left:10px;
+padding-right:10px;
+    border: 2px white solid;
+}
+#Ace_challage li a {
+        text-decoration: none;
+    font-size:50px;
+    color:black
+}
+#Ace_Results{
+    background-color: gray;
+    width:100%;
+     font-size: 30px;
+
+
+}
+#Ace_QSpam {
+
+    color: black;
+}
+#Ace_Incorrect{
+    color: red;
+}
+
+#Ace_Correct{
+    color: Green;
+}
+#Ace_Game_Start{
+     margin:auto;
+    width:1000px;
+    border: 2px black solid;
+    height:auto;
+    background-color:white;
+    font-size:40px;
+}
+#Ace_ButtonToStartCss{
+    background-color: white;
+
+     margin:auto;
+    width:1000px;
+    border: 2px black solid;
+    height:auto;
+    font-size:40px;
+    text-align: center;
+}
+ #Ace_MoveToRight{
+     text-align: right;
+ }
+#Ace_Game_Start #Ace_MoveToRight2{
+    text-align: right;
+    font-size:30px;
+}
+#userA {
+
+    font-size:40px;
+}
+#countdown{
+    font-size:35px;
+    border-width:0px;
+    border:none;
+}
+.Ace_SizeIsFixed{
+    width:500px;
+}
+#Ace_ChangeSize_InCalGameStart{
+    font-size:70px;
+}
+
+.Ace_Make_IT_Hover:hover{
+    background-color: lightgray;
+
+}
+.Ace_For_Results_All{
+
+    background-color: whitesmoke;
+    width:70%;
+    border: 2px black solid;
+    margin: auto;
+}
+#wanna_make_it_to_the_right{
+
+    float:right;
+}
+.Ace_LabelForChallage{
+padding-top:20px;
+    padding-bottom: 20px;
+font-size:30px;
+
+}
+
+#Ace_Challage_BOX {
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+    text-align: center;
+    background-color: white;
+}
+
+#Ace_Challage_body{
+ margin-left: auto;
+  margin-right: auto;
+}
+#Ace_Challage_Submit{
+width:100%;
+    font-size:25px;
+
+}
+#Ace_Challage_Submit:hover{
+    background-color:lightgray;
+
+}
+.being_Lazy{
+    text-align: center;
+}
+
+#Ace_Challage_Return li {
+    display: inline-block;
+    width:100%;
+    border:1px solid black;
+    background-color: whitesmoke;
+}
+#Ace_Challage_Return li:hover {
+
+    background-color: lightgray;
+}
+#Ace_Challage_Return li a{
+    text-decoration: none;
+    font-size:25px;
+    padding-left: 40%;
+    padding-right: 40%;
+}
+#Ace_Guess_Number {
+    color: black;
+    padding-bottom: 50%;
+
+    padding-right: 10%;
+    padding-top: 100%;
+
+    font-size: 60px;
+    text-decoration: none;
+    text-align: center;
+}
+
+#Ace_Guess_NumberSub{
+        color:black;
+          padding-bottom:50%;
+
+    padding-right:25%;
+    padding-top:100%;
+    padding-left:20%;
+    font-size:60px;
+    text-decoration: none;
+    text-align: center;
+}
+#Ace_BackButtonWillFloatRight{
+    float:right;
+    margin-top:100px;
+    margin-right: 20px;
+    list-style-type: none;
+}
+#Ace_BackButtonWillFloatRight li{
+    display:inline-block;
+        padding-left:10px;
+padding-right:10px;
+    border: 2px white solid;
+}
+#Ace_Backbutton{
+    font-size:50px;
+    color:black;
+    text-decoration: none;
+}
+#Ace_BackButtonWillFloatRight li:hover{
+    background-color:lightgray;
+}
+#historyOrder li{
+
+    display:inline-block;
+    padding: 2%;
+}
+
+#bodyHistory{
+    text-align: center;
+}
+.Ace_History_box{
+    border: 2px solid;
+    margin:auto;
+    width:70%;
+    background-color: white;
+    text-align: center;
+}
+#Ace_table_guess td{
+    vertical-align: top ;
+    padding-right:10px;
+    padding-top:5px;
+    padding-bottom: 5px;
+}
+#Ace_table_guess{
+    margin:auto;
+
+}
+.Ace_padding_left{
+    padding-left:10px;
+}
+
+#timeup{
+    font-size:40px;
+}
+
+#Ace_challage li:hover{
+    background-color:lightgray;
+}
+
+#Ace_HistoryHover{
+margin-left: 88%;
+}
+#Ace_HistoryHover:hover{
+background-color:lightgray;
+
+}
+
+#ChallengeBody{
+    font-size:20px;
+    text-align: center;
+}
+
+#Ace_InputWidth{
+    width:100px;
+}
+
+#Ace_Startbutton{
+border:1px solid black;
+    background-color: ghostwhite;
+}
+#Ace_Startbutton:hover{
+background-color:lightgray;
+}
+
+#Ace_Startbutton a{
+    text-decoration: none;
+
+}
+#Ace_Challage_body input {
+  width: 100%;
+}
+#Ace_paddingforStartButton{
+    padding-left:10px;
+    color:black;
+    padding-right:10px;
+}
+#Ace_AllHistory{
+    text-align: center;
+}
+#Ace_button_History{
+
+    text-decoration: none;
+
+    color:black;
+padding:2px 10px 2px 10px ;
+
+}
+#Ace_Cover_button_History{
+    border: 1px black solid;
+        font-size:30px;
+    background-color:white;
+
+}
+#Ace_Cover_button_History:hover{
+    background-color:lightgray;
+
+}
+
+
+
+/*
+Ace Ended
+*/
+
+
+
+

@@ -3,23 +3,25 @@
 <title>{% block title %}{% endblock %} - Flaskr</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='Base.css') }}">
 <nav>
-  <h1>Flaskr</h1>
+
   <ul>
     {% if session['id'] %}
-        <li><a id='weblogo' href=''><img src='' alt='WebPage Logo'/></a>
+        <li class="logo"><a id='weblogo' href=''><img src='' alt='WebPage Logo'/></a>
 
 			<li><a class='link' href="#">Scheme</a>
 			<li><a class='link' href="#">Calendar</a>
 			<li><a class='link' href="#">Game</a>
 			<li><a class='link' href="#">Home</a>
-      <li><span>{{ session['user_name'] }}</span>
+
       <li><a href="{{ url_for('logout') }}">Log Out</a>
+        <li>{{ session['user_name'] }}
     {% else %}
       <li><a href="{{ url_for('register') }}">Register</a>
       <li><a href="{{ url_for('login') }}">Log In</a>
     {% endif %}
   </ul>
 </nav>
+<div id="topempty"></div>
 <section class="content">
   <header>
     {% block header %}{% endblock %}

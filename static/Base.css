@@ -24,9 +24,14 @@ nav img{
 
 
 
+nav li{
+
+    display:inline-block;
+
+}
 nav a {
 	float:right;
-	padding-right:90px;
+	padding-right:50px;
     text-decoration:none;
     color: #fff;
     margin-left: 20px;

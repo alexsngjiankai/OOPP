@@ -2,4 +2,33 @@
 {% extends 'JinAnn/Base.html' %}
 
 {% block content %}
+
+
+       <div class="form">
+           <form method = 'post'>
+
+               <label for="location">Location</label>
+                 <input type='text' name='location' id="location" value =' {{request.form["location"]}} ' required><br/>
+
+               <label for="income">Date</label>
+                 <input type='date' name="date" id="date" value =' {{request.form["date"]}} ' required><br/>
+
+               <label for="#">Time</label>
+                 <input type='time' name="time" id="time" value =' {{request.form["time"]}} ' required><br/>
+
+                <label for="#">Reason for visit</label>
+                 <input type='text' name="reason" id="reason" value =' {{request.form["reason"]}} ' required><br/>
+
+               <input type="radio" name="referral" value="self">Self Referral
+               <input type="radio" name="referral" value="doctor">Referred by:
+
+               <input type='text' name="reason" id="reason" value =' {{request.form["reason"]}} ' required><br/>
+
+
+               <input type="submit" value="Confirm">
+
+
+           </form>
+
+       </div>
 {% endblock %}

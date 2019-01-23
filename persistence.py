@@ -389,3 +389,7 @@ def sendImgToTem(img):
 def testShowImg():
     tem=temStore["test1"]
     return tem
+
+
+
+

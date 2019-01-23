@@ -2,24 +2,51 @@ from flask import *
 from persistence1 import *
 from persistence import *
 import functools
-from alexpersistance import *
-from medication import *
-from datetime import datetime
+#from alexpersistance import *
+#from medication import *
+#from datetime import datetime
 #rr
 app = Flask(__name__)
 app.config.from_mapping(
     SECRET_KEY='dev'
 )
 
-@app.route('/scheme2')
-def base():
-    return render_template('JinAnn/scheme2.html')
-#asddsa
+@app.route('/schemeform',  methods=('GET', 'POST'))
+def schemeform():
+    if request.method == 'POST':
+        age = int(request.form['age'])
+        income = int(request.form['income'])
+
+        return render_template("JinAnn/schemeform.html", age=age, income=income)
+
+    age =0
+    income=0
+    return render_template('JinAnn/schemeform.html', age=age, income=income)
+
+
+@app.route('/appointment', methods=('GET', 'POST'))
+def appointment():
+    if request.method == 'POST':
+        location  = str(request.form['location'])
+        date = str(request.form['date'])
+        time = str(request.form['time'])
+        reason = str(request.form['reason'])
+        referral = appointment.querySelector('input[name="referral"]:checked').value;
+        return render_template("JinAnn/AppointmentList.html", )
+
+    return render_template('JinAnn/Appointment.html')
+
+
+@app.route('/appointmentlist')
+def appointmentstorage():
+
+
+
+    return render_template('JinAnn/AppointmentList.html')
 
 @app.route('/scheme')
 def scheme():
     return render_template('JinAnn/scheme.html')
-
 @app.route('/home')
 def home():
     return render_template('homepage.html')
@@ -35,7 +62,6 @@ def contacthelp():
 @app.route('/signup')
 def signup():
     return render_template('signup.html')
-
 
 
 

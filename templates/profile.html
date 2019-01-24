@@ -1,41 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Profile</title>
-    <link rel="stylesheet" type="text/css" href="./static/css.css">
-</head>
-<body>
-<h2>profile</h2>
+{% extends 'JinAnn/Base.html' %}
+<h1>{% block title %}Profile{% endblock %}</h1>
+{% block content %}
     <div>
-        <a href=/>Home</a>
-        <a href=/medselection>Medication</a>
-        <a href=/bookappointment>Book appointment</a>
-        <a href=/contacthelp>Contact and Help</a>
-        <a href=/profile>Profile & Settings</a>
-        <a href=/games>Games</a>
-        <a href=/schemes>Schemes</a>
+        <p>Name: {{ name }}</p>
+        <p>Age: {{ age }}</p>
+        <p>Contact: {{ contactnumber }}</p>
+        <p>Doctor in charge: {{ doctor }}</p>
+        <p>Hospital: {{ hospital }}</p>
     </div>
-    <div>
-        <p>Name: </p>
-        <p>Age: </p>
-        <p>Contact: </p>
-        <p>Doctor in charge: </p>
-        <p>Hospital: </p>
+    <div class="Zhi_jian_message">
+        <h3 >Messages & Reminders</h3>
     </div>
-    <div>
-        <h2>Messages & Reminders</h2>
-    </div>
-    <div>
-        <h2>Medication</h2>
+    <div class="Zhi_jian_message">
+        <h3 >Medication</h3>
 
     </div>
-    <div>
-        <h2>Settings</h2>
+    <div class="Zhi_jian_message">
+        <h3 >Settings</h3>
         <p>Font Size: </p>
         <p>Alarm: </p>
         <p>Alarm volume: </p>
         <p>Language: </p>
     </div>
-</body>
-</html>
+{% endblock %}

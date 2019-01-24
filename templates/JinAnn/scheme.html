@@ -1,23 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
 
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href = " {{ url_for('static', filename = 'Base.css') }}" />
+{% extends 'JinAnn/Base.html' %}
+<h1>{% block title %}ChllengeStart{% endblock %}</h1>
+{% block content %}
 
-        <nav>
-			<br>
-			<a id='weblogo' href=''>
-			<img src='/static/Pictures/Logo.PNG' alt='WebPage Logo'/>
-			</a>
-
-			<a class='link' href="#">Scheme</a>
-			<a class='link' href="#">Calendar</a>
-			<a class='link' href="#">Game</a>
-			<a class='link' href="#">Home</a>
-		</nav>
-
-
-<div id="topempty"></div>
     <h3> Schemes available/You are benefiting from</h3>
         <button> <a
             href = ' {{ url_for('schemeform') }}'>   FILTER TEST</a>
@@ -36,4 +21,4 @@
             <h2> Scheme 3</h2>
         </div>
 
-</html>
+{% endblock %}

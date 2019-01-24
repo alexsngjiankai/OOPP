@@ -35,3 +35,9 @@ def create_element(id, location, date, time ,reason, referral):
         tst = AppointmentStore(location, date, time, reason, referral)
         list.append(tst)
         appointmentStorage[id]=list
+
+
+def send_appointment(user):
+
+    x = appointmentStorage[user]
+    return x

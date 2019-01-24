@@ -10,7 +10,7 @@
 
 {% if App_name=="Cal" %}
     <p>Calculation Game Challenge mode</p>
-    <p> class="AlittlePaddingToTheLeft">Total Qns : {{ howManyQ }}</p>
+    <p>Total Qns : {{ howManyQ }}</p>
     <p>Total Time to complete all 10 question is : {{ taketime }}s</p>
      <p>Will have addition and subtraction </p>
     <p>Press the start button to start the game</p>
@@ -27,7 +27,7 @@
     <span id="Ace_Startbutton"><a href="{{ url_for('challageStart') }}">Start</a></span>
 {% endif %}
   <br>
-    <button id="Ace_HistoryHover"><a id="Ace_Backbutton" href="{{ url_for('challage_All') }}">Back</a></button>>
+    <button id="Ace_HistoryHover"><a id="Ace_Backbutton" href="{{ url_for('challage_All') }}">Back</a></button>
 
 </div>
 {% endblock %}

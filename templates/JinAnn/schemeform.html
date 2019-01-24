@@ -1,23 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'JinAnn/Base.html' %}
+<h1>{% block title %}ChllengeStart{% endblock %}</h1>
+{% block content %}
 
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href = " {{ url_for('static', filename = 'Base.css') }}" />
-
-        <nav>
-			<br>
-			<a id='weblogo' href=''>
-			<img src='/static/Pictures/Logo.PNG' alt='WebPage Logo'/>
-			</a>
-
-			<a class='link' href="#">Scheme</a>
-			<a class='link' href="#">Calendar</a>
-			<a class='link' href="#">Game</a>
-			<a class='link' href="#">Home</a>
-		</nav>
-
-
-<div id="topempty"></div>
 
        <div class="form">
            <form method = 'post'>
@@ -37,5 +21,4 @@
 {% if age >= 50 and income <= 2000 %}
     <div> Scheme 2</div>
     {%  endif %}
-
-</html>
+{% endblock %}

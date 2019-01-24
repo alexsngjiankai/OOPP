@@ -2,6 +2,7 @@ from flask import *
 from persistence1 import *
 from persistence import *
 import functools
+from persistenceJA import *
 from alexpersistance import *
 from medication import *
 #from datetime import datetime
@@ -26,38 +27,59 @@ def schemeform():
 
 @app.route('/appointment', methods=('GET', 'POST'))
 def appointment():
+    user=session["user_name"]
     if request.method == 'POST':
         location  = str(request.form['location'])
         date = str(request.form['date'])
         time = str(request.form['time'])
         reason = str(request.form['reason'])
-        referral = appointment.querySelector('input[name="referral"]:checked').value
-        return render_template("JinAnn/AppointmentList.html", )
+        referral = "   "
+        create_element(user,location,date,time,reason,referral)
+        return redirect(url_for("appointmentstorage"))
 
     return render_template('JinAnn/Appointment.html')
 
 
 @app.route('/appointmentlist')
 def appointmentstorage():
+    user=session["user_name"]
+    list=send_appointment(user)
+    print(list)
 
-
-
-    return render_template('JinAnn/AppointmentList.html')
+    return render_template('JinAnn/AppointmentList.html',posts=list)
 
 @app.route('/scheme')
 def scheme():
     return render_template('JinAnn/scheme.html')
+
+
 @app.route('/home')
 def home():
     return render_template('homepage.html')
 
 @app.route("/profile")
 def profile():
-    return render_template('profile.html')
+    username = session['user_name']
+    name = session['name']
+    age = session['age']
+    contactnumber = session['contactnumber']
+    doctor = session['doctor']
+    hospital = session['hospital']
+    return render_template('profile.html', username=username, name=name, age=age, contactnumber=contactnumber,
+                           doctor=doctor, hospital=hospital)
+
+
 
 @app.route("/contacthelp")
 def contacthelp():
-    return render_template('contacthelp.html')
+    hospital=session['hospital']
+    doctor = session['doctor']
+
+    hospitalcontact=check_hosipital(hospital)
+    doctorcontact=check_doctor(doctor)
+
+    return render_template('contacthelp.html', hospitalcontact=hospitalcontact, doctorcontact=doctorcontact)
+
 
 @app.route('/signup')
 def signup():
@@ -104,7 +126,7 @@ def init():
 def index():
     if 'id' in session:
         posts = get_blogs()
-        return render_template('homepage.html')
+        return render_template('homepage.html')#this is homepage Ace put a temperory one
     else:
         return render_template('login.html')
 
@@ -124,9 +146,14 @@ def login():
             if user is None:
                 error = 'Wrong username and password'
             else:
-
+                session['name'] = user.get_name()
                 session['id'] = user.get_id()
                 session['user_name'] = user.get_username()
+                session['age'] = user.get_age()
+                session['contactnumber'] = user.get_contactnumber()
+                session['doctor'] = user.get_doctor()
+                session['hospital'] = user.get_hospital()
+                session['firstvisit'] = user.get_firstvisit()
                 return redirect(url_for('index'))
         flash(error)
     return render_template('login.html')
@@ -136,13 +163,30 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        name = request.form['name']
+        age = request.form['age']
+        contactnumber = request.form['contactnumber']
+        doctor = request.form['doctor']
+        hospital = request.form['hospital']
+        firstvisit = 0
+
         error = None
         if not username:
             error = 'Username is required.'
         elif not password:
             error = 'Password is required.'
+        elif not name:
+            error = 'Name is required.'
+        elif not age:
+            error = 'Age is required.'
+        elif not contactnumber:
+            error = 'Contact number is required.'
+        elif not doctor:
+            error = 'Doctor name is required.'
+        elif not hospital:
+            error = 'Hospital name is required.'
         else:
-            create_user(username, password)
+            create_user(username, password, name, age, contactnumber, doctor, hospital, firstvisit,language="")
             return redirect(url_for('login'))
         flash(error)
     return render_template('register.html')

@@ -7,6 +7,7 @@ from alexpersistance import *
 from medication import *
 #from datetime import datetime
 #rr
+#test
 app = Flask(__name__)
 app.config.from_mapping(
     SECRET_KEY='dev'

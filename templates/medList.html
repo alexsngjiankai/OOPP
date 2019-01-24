@@ -1,34 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<html>
-	<head>
-		<meta charset="utf-8">
-		<!--<link rel="stylesheet" type="text/css" href = "{{ url_for('static', filename='medstyle.css') }}"/> -->
-        <link rel="stylesheet" type="text/css" href="../static/medstyle.css">
+{% extends 'JinAnn/Base.html' %}
+<h1>{% block title %}medList{% endblock %}</h1>
 
-	</head>
-
-
-    <body>
-<nav>
-        <a href=/homepage>Home</a>
-        <a href=/medselection>Medication</a>
-        <a href=/medList>Medication List</a>
-        <a href=/bookappointment>Book appointment</a>
-        <a href=/contacthelp>Contact and Help</a>
-        <a href=/profile>Profile & Settings</a>
-        <a href=/gameSelection>Games</a>
-        <a href=/schemes>Schemes</a>
-        <a href=/logout>Log out</a>
-</nav>
+{% block content %}
 
 	<!------------------------------------------------------------------------------------------------------------>
 <div class="sect sectOne">
     <div id="emptyspace1"></div>
-		<h1 class="Medhead">Medications to take</h1>
+		<h1 class="Alex_Medhead">Medications to take</h1>
 		<div id="section1">
 
-		<table class = "Medtable" border="4">
+		<table class = "Alex_Medtable" border="4">
 
             <tr><td>
                 <ul>
@@ -55,8 +36,7 @@
 <!------------------------------------------------------------------------------------------------------------>
 
 
-<div class="subSection">
+<div class="Alex_subSection">
 </div>
 <!------------------------------------------------------------------------------------------------------------>
-</body>
-</html>
+{% endblock %}

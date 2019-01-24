@@ -8,9 +8,14 @@
         <span class="logo"><a id='weblogo' href=''><img src='' alt='WebPage Logo'/></a></span>
         <ul id="base_ul">
         <li><a class='link' href="{{ url_for('logout') }}">Home</a></li>
-        <li><a class='link' href="{{ url_for('logout') }}">Scheme</a></li>
-        <li><a class='link' href="{{ url_for('logout') }}">Calendar</a></li>
+        <li><a class='link' href="{{ url_for('schemeform') }}">Scheme</a></li>
+        <li><a class='link' href="{{ url_for('appointmentstorage') }}">Current Appointment</a></li>
+        <li><a class='link' href="{{ url_for('appointment') }}">Make Appointment</a></li>
+        <li><a class='link' href="{{ url_for('medselection') }}">Medication</a></li>
+        <li><a class='link' href="{{ url_for('medList') }}">Medication List</a></li>
         <li><a class='link' href="{{ url_for('goToGameSelection') }}">Game</a></li>
+        <li><a class='link' href="{{ url_for('logout') }}">Contact and Help</a></li>
+        <li><a class='link' href="{{ url_for('logout') }}">Profile & Settings</a></li>
         <li><a class='link' href="{{ url_for('logout') }}">Log Out</a></li>
 
         </ul>

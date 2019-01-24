@@ -31,7 +31,7 @@ def appointment():
         date = str(request.form['date'])
         time = str(request.form['time'])
         reason = str(request.form['reason'])
-        referral = appointment.querySelector('input[name="referral"]:checked').value;
+        referral = appointment.querySelector('input[name="referral"]:checked').value
         return render_template("JinAnn/AppointmentList.html", )
 
     return render_template('JinAnn/Appointment.html')
@@ -69,8 +69,7 @@ def signup():
 @app.route("/medselection", methods=('GET','POST'))
 def medselection():
     if request.method == 'POST':
-        session["id"]="punch" #delete this when all intergated
-        user=session["id"]
+        user=session["user_name"]
         name = str(request.form['medname'])
         amount = str(request.form['medamount'])
         description = str(request.form['MedDescription'])
@@ -80,7 +79,7 @@ def medselection():
 
 @app.route('/medList')
 def medList():
-    user=session["id"]
+    user=session["user_name"]
     list_med=return_list_med(user)
     return render_template('medList.html', list_med=list_med)
 

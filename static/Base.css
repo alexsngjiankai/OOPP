@@ -26,10 +26,11 @@ nav img{
     height:20px;
 }
 nav li{
+
     border:2px solid white;
     display:inline-block;
-  margin-left: 20px;
-        margin-right: 20px;
+  margin-left: 5px;
+        margin-right: 5px;
     margin-top:10px;
 }
 
@@ -42,7 +43,7 @@ nav li{
 }
 
 nav a {
-	padding: 10px 40px 10px 40px;
+	padding: 10px 20px 10px 20px;
     text-decoration:none;
     color: #fff;
 
@@ -80,9 +81,141 @@ div h2 {
 
 
 
+/*
+Alex started
+*/
+ hr{
+     width: 100%;
+ }
+
+
+ .sect{
+	 height:165%;
+	 background-size: cover;
+	 background-repeat: no-repeat;
+	 background-attachment:fixed;
+ }
+
+ .Alex_subSection{
+	 height:27%;
+	 background-image: url("https://image.architonic.com/img_pro2-4/130/4954/galleria-eiche-rustikal-b.jpg")
+ }
+
+ .sectOne{
+	 background-image:url("https://www.christianimages123.com/wp-content/uploads/2014/06/blue-green-modern-background-300x225.jpg");
+ }
+
+
+.Alex_Medhead{
+	font-size: 4em;
+	text-align:center;
+    color: black;
+    text-shadow:
+    -1px -1px 0 #FFF,
+    1px -1px 0 #FFF,
+    -1px 1px 0 #FFF,
+    1px 1px 0 #FFF;
+}
+ .btmsub{
+	color:black;
+	text-align:center;
+	font-size:2.5em;
+	font-style:oblique;
+
+ }
+
+ /* CSS FOR THE TABLE--------------------------------------------------------- */
+.Alex_Medtable{
+	border-collapse:collapse;
+	margin:auto;
+	background-color: white;
+	opacity:0.85;
+	font-size:1.5em;
+}
+
+.tablecell{
+	padding:50px;
+	font-weight:bold;
+	font-family: Garamond;
+	text-align: center;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: black;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman";
+	color:white;
+}
+
+.tablecell:hover .dropdown-content {
+    display: block;
+	margin-bottom:100px;
+}
+#tableheader{
+	font-size:2em;
+	font-family:verdana;
+}
+
+
+/*===============================================================================================*/
+/*=================================CSS FOR MEDSELECTION.HTML=====================================*/
+
+input[type=text] {
+  width:80%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+#Alex_emptyspace2{
+    padding-top: 200px;
+}
+#Alex_medform{
+	padding-left:100px;
+}
+
+#emptyspace3{
+	padding-top: 40px;
+}
+input[type=submit] {
+  width: 20%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+#Alex_medselectionbody{
+    background-image: url("https://www.christianimages123.com/wp-content/uploads/2014/06/blue-green-modern-background-300x225.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 
 /*
-Ace Ended
+alex ended
+*/
+
+
+
+
+/*
+Ace started
 */
 
 #Ace_body{
@@ -442,8 +575,6 @@ padding:2px 10px 2px 10px ;
     background-color:lightgray;
 
 }
-
-
 
 /*
 Ace Ended

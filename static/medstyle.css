@@ -107,7 +107,7 @@ nav a{
     line-height:50px;
 }
 
-#emptyspace1{
+#Ace_emptyspace1{
     padding-top: 50px;
 }
 
@@ -128,10 +128,10 @@ input[type=text] {
 input[type=text]:focus {
   border: 3px solid #555;
 }
-#emptyspace2{
+#Alex_emptyspace2{
     padding-top: 200px;
 }
-#medform{
+#Alex_medform{
 	padding-left:100px;
 }
 
@@ -150,7 +150,7 @@ input[type=submit] {
 }
 
 
-#medselectionbody{
+#Alex_medselectionbody{
     background-image: url("https://www.christianimages123.com/wp-content/uploads/2014/06/blue-green-modern-background-300x225.jpg");
     background-size: cover;
     background-repeat: no-repeat;

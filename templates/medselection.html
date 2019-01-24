@@ -1,31 +1,17 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<meta charset="UTF-8">
-<head>
-    <link rel="stylesheet" type="text/css" href="../../static/medstyle.css">
+{% extends 'JinAnn/Base.html' %}
+
+<h1>{% block title %}medSelection{% endblock %}</h1>
 
 
-</head>
 
-<body id = "medselectionbody">
-
-<nav>
-        <a href=homepage/>Home</a>
-        <a href=/medselection>Medication</a>
-        <a href=/medList>Medication List</a>
-        <a href=/bookappointment>Book appointment</a>
-        <a href=/contacthelp>Contact and Help</a>
-        <a href=/profile>Profile & Settings</a>
-        <a href=/gameSelection>Games</a>
-        <a href=/schemes>Schemes</a>
-        <a href=/logout>Log out</a>
-</nav>
+{% block content %}
+<div id = "Alex_medselectionbody">
 
 <div>
 
-<div id="emptyspace2"></div>
-<form id = "medform" method="post" action="/medselection">
+<div id="Alex_emptyspace2"></div>
+<form id = "Alex_medform" method="post" action="/medselection">
 
   <label for="medname">Medicine Name:</label>
   <input type="text" id="medname" name="medname" placeholder="Enter Name of Prescription"><br><div id="emptyspace3"></div>
@@ -44,5 +30,6 @@
 
 </div>
 
-</body>
-</html>
+</div><!-- ace edit this from body to div -->
+
+{% endblock %}

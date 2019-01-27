@@ -3,9 +3,14 @@
 <h1>{% block title %}CalculaitonRunning{% endblock %}</h1>
 <!--<script src="/static/js/countdown.js"></script>-->
 {% block content %}
-<div id="Ace_Game_Start">
-{% if  whichgame =="Cal" %}
 
+    <br>
+<br>
+<br>
+<br>
+
+{% if  whichgame =="Cal" %}
+<div id="Ace_Game_Start">
 
 
     <script>
@@ -48,7 +53,7 @@
     <div id="Ace_Disapper">
     <form method="post">
     <table>
-        <tr><td><h1  class="hide">Q{{ checkIfCorrect }} ) / Q </h1></td></tr>
+        <tr><td><h1  class="hide">Q{{ checkIfCorrect }}  / {{ Qtotal }}Q  )</h1></td></tr>
 
         <tr><td class="Ace_SizeIsFixed"><h1 id="Ace_MoveToRight" class="hide">{{ Q1 }} {{ Signs }} {{ Q2 }}=</h1></td><td><input type="number" name="userA" id="userA" min="1" max="9999"  required value="{{ request.form['userA'] }}"></td></tr>
     </table>
@@ -72,16 +77,27 @@
     <div id="AppearOnlyWhen">
         <h1 id="timeup" >Times up</h1>
     <button id="testing" class="Ace_Make_IT_Hover"><a id="Ace_ChangeSize_InCalGameStart" href="{{ url_for('results') }}">Results</a></button>
+
 </div>
+
+    <br>
+    <br>
+    </div>
 {% elif whichgame=="Guess" %}
+    <div id="Ace_Game_Start">
     <script>
+
      document.addEventListener("DOMContentLoaded",refreshRun);
 		function refreshRun(){
 
-            document.getElementById("countdown").disabled = false;
-                document.getElementById("hiddenbutton").disabled=false;
+		                document.getElementById("countdown").disabled = false;
+            document.getElementById("hiddenbutton").disabled=false;
 
             document.getElementById("hiddenbutton").style.display="none";
+
+            document.getElementById("Ace_countDownTimer").style.display="block";
+
+
 
             var seconds;
             var temp;
@@ -104,39 +120,51 @@
             }
 		}
     </script>
+    {% if current_list_now == 1 %}
+        <h1 id="Ace_CurrentNumberInGuess">Remember the {{ current_list_now }}st number</h1>
+    {% elif current_list_now == 2%}
+        <h1 id="Ace_CurrentNumberInGuess">Remember the {{ current_list_now }}nd number</h1>
+    {% elif current_list_now == 3%}
+        <h1 id="Ace_CurrentNumberInGuess">Remember the {{ current_list_now }}rd number</h1>
+    {% else %}
+        <h1 id="Ace_CurrentNumberInGuess">Remember the {{ current_list_now }}th number</h1>
+    {% endif %}
+        {% if diff=="Easy" %}
+            <a id="hiddenbutton" href="{{ url_for('chooseEasy') }}"></a>
+    {% elif diff=="Normal" %}
+         <a id="hiddenbutton" href="{{ url_for('chooseNormal') }}"></a>
+    {% elif diff=="Hard" %}
+     <a id="hiddenbutton" href="{{ url_for('chooseHard') }}"></a>
+    {% elif diff=="Challange" %}
+    <a id="hiddenbutton" href="{{ url_for('challageStart') }}"></a>
+    {% endif %}
 
-    <h1>Remember the number</h1>
+    <br>
 {%  if current_list_now != totalQ %}
     <div>
         <h1>
             {{ question }}
         </h1>
     </div>
-
-
-        {{ current_list_now }}
-    {% if diff=="Easy" %}
-    <button ><a id="hiddenbutton" href="{{ url_for('chooseEasy') }}">h1</a></button>
-    {% elif diff=="Normal" %}
-         <button ><a id="hiddenbutton" href="{{ url_for('chooseNormal') }}">h1</a></button>
-    {% elif diff=="Hard" %}
-     <button ><a id="hiddenbutton" href="{{ url_for('chooseHard') }}">h1</a></button>
-    {% elif diff=="Challange" %}
-     <button ><a id="hiddenbutton" href="{{ url_for('challageStart') }}">h1</a></button>
-    {% endif %}
-<input id="countdown" name="countdown" size="1" value="{{ timer }}" readonly>
+      <br>
+    <br>
+    <p id="Ace_countDownTimer">Time left: <input id="countdown" name="countdown"  size="1" value="{{ timer }}" readonly></p>
     {% else %}
     <script>
 
+    document.getElementById("Ace_CurrentNumberInGuess").style.display="none";
     document.getElementById("countdown").disabled = true;
+    document.getElementById("hiddenbutton").style.display="none";
     document.getElementById("hiddenbutton").disabled=true;
+    document.getElementById("Ace_countDownTimer").style.display="none";
+
 
     </script>
-    <h1>this is the end of the question</h1>
+    <h1>Remember The Number</h1>
     <form method="post">
 
-    {% for i in range(current_list_now) %}
-        <p class="Ace_padding_left">
+    {% for i in range(1,current_list_now) %}
+        <p class="Ace_padding_left">{{ i }}
         <input type="number" name="{{ i }}" min="1" max="200" required value="{{ request.form['{{ i }}'] }}" >
         </p>
 
@@ -146,6 +174,10 @@
      </form>
 
     {% endif %}
-{% endif %}
+
+
     </div>
+{% endif %}
+
+
 {% endblock %}

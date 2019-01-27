@@ -2,15 +2,15 @@
 <h1>{% block title %}Results{% endblock %}</h1>
 {% block content %}
 
-<div id="Ace_Results">
+<div class="Ace_For_Results_All">
 <h1 >Results</h1>
-
+<br>
 
 {% if App_name=="Cal" %}
-    <div class="Ace_For_Results_All">
+
 {% for i in tomtom %}
     {% if i['U']!=0 %}
-   <h1 id="Ace_QSpam">{{ i['EQ1'] }} {{i['S'] }} {{ i['EQ2'] }}={{ i['U'] }}  ans:{{ i['A'] }}
+   <h1 id="Ace_QSpam">{{ i['EQ1'] }} {{i['S'] }} {{ i['EQ2'] }}={{ i['A'] }} your answer:{{ i['U'] }}</h1>
 
 
        {% if i["C"]=="Incorrect" %}
@@ -18,31 +18,24 @@
         {% else %}
            <h1 id="Ace_Correct">{{ i['C'] }}</h1>
        {% endif %}
-
-
-
-
-   </h1>
     {% endif %}
 {% endfor %}
-    </div>
 {% endif %}
 
 {% if App_name== "Guess"%}
 
     {% for i in tomtom %}
 
-    <h1>{{ i["Question"]}} your answer {{ i["User_answer"] }}</h1>
+    <h1>The answer:{{ i["Question"]}}   your answer:{{ i["User_answer"] }}  </h1>
        {% if i["correction"]=="Incorrect" %}
        <h1 id="Ace_Incorrect">{{ i['correction'] }}</h1>
         {% else %}
            <h1 id="Ace_Correct">{{ i['correction'] }}</h1>
        {% endif %}
-
     {% endfor%}
 {% endif %}
-
-<button class="Ace_Make_IT_Hover" id="wanna_make_it_to_the_right"><a id="Ace_ChangeSize_InCalGameStart" href="{{ url_for('goToGameSelection') }}">Back to game select</a></button>
-
+        <span id="Ace_HistoryHover"><a id="Ace_Backbutton" href="{{ url_for('goToGameSelection') }}">Back to Selection</a></span>
+<br>
+<br>
 </div>
 {% endblock %}

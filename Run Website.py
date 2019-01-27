@@ -292,10 +292,11 @@ def chooseEasy():
             taketime=give_Back_Time()
             Signs = give_Sign()
             checkIfCorrect=checkrange()
+            Qtotal=10
             whichgame=give_App_Name()
 
             return render_template("ace/CalGameStart.html",total=total,currentQ=currentQ,tomtom=tomtom,Q1=Q1,Q2=Q2
-                                   ,checkIfCorrect=checkIfCorrect,howManyQ=howManyQ,Signs=Signs,taketime=taketime,whichgame=whichgame)
+                                   ,checkIfCorrect=checkIfCorrect,howManyQ=howManyQ,Signs=Signs,taketime=taketime,whichgame=whichgame,Qtotal=Qtotal)
 
         #guessing game ==================================================
         elif give_App_Name()=="Guess":
@@ -306,13 +307,13 @@ def chooseEasy():
             generate_Guess(1,99,diff)
             question=send_guess_num()
             timer=10
-            totalQ=5
-            current_list_now =send_guess_list_amount()
+            totalQ=6
+            current_list_now =send_guess_list_amount() +1
             if request.method == 'POST':
-                count=0
+                count=1
                 testing_list=[]
 
-                for i in range(totalQ):
+                for i in range(1,totalQ):
                     test=request.form[str(count)]
                     testing_list.append(test)
                     count+=1
@@ -367,9 +368,10 @@ def chooseNormal():
         Q2 = giveE2()
         Signs = give_Sign()
         checkIfCorrect = checkrange()
+        Qtotal=15
         whichgame = give_App_Name()
         return render_template("ace/CalGameStart.html", total=total, currentQ=currentQ, tomtom=tomtom, Q1=Q1, Q2=Q2,
-                               checkIfCorrect=checkIfCorrect, howManyQ=howManyQ,taketime=taketime,Signs=Signs,whichgame=whichgame)
+                               checkIfCorrect=checkIfCorrect, howManyQ=howManyQ,taketime=taketime,Signs=Signs,whichgame=whichgame,Qtotal=Qtotal)
 
     elif give_App_Name() == "Guess":
         whichgame = give_App_Name()
@@ -377,16 +379,19 @@ def chooseNormal():
         generate_Guess(1, 99,diff)
         question = send_guess_num()
         timer = 10
-        totalQ = 8
-        current_list_now = send_guess_list_amount()
+        totalQ = 9
+        current_list_now = send_guess_list_amount()+1
         if request.method == 'POST':
-            count = 0
+            count = 1
             testing_list = []
 
-            for i in range(totalQ):
+            for i in range(1,totalQ):
                 test = request.form[str(count)]
                 testing_list.append(test)
                 count += 1
+                print("{")
+                print(count)
+                print("}")
 
             error = None
             # if not UAns:
@@ -437,8 +442,9 @@ def chooseHard():
         Signs = give_Sign()
         checkIfCorrect = checkrange()
         whichgame = give_App_Name()
+        Qtotal=20
         return render_template("ace/CalGameStart.html", total=total, currentQ=currentQ, tomtom=tomtom, Q1=Q1, Q2=Q2,
-                               checkIfCorrect=checkIfCorrect, howManyQ=howManyQ,taketime=taketime,Signs=Signs,whichgame=whichgame)
+                               checkIfCorrect=checkIfCorrect, howManyQ=howManyQ,taketime=taketime,Signs=Signs,whichgame=whichgame,Qtotal=Qtotal)
 
     elif give_App_Name() == "Guess":
         whichgame = give_App_Name()
@@ -446,13 +452,13 @@ def chooseHard():
         generate_Guess(1, 99,diff)
         question = send_guess_num()
         timer = 5
-        totalQ = 10
-        current_list_now = send_guess_list_amount()
+        totalQ = 11
+        current_list_now = send_guess_list_amount()+1
         if request.method == 'POST':
-            count = 0
+            count = 1
             testing_list = []
 
-            for i in range(totalQ):
+            for i in range(1,totalQ):
                 test = request.form[str(count)]
                 testing_list.append(test)
                 count += 1
@@ -477,7 +483,7 @@ def challage_All():
     app_name=give_App_Name()
     if give_App_Name()=="Cal":
         if request.method == 'POST':
-            UStart = request.form['Start']
+            UStart = "1"
             UEnd=request.form['End']
             URange=request.form['Range']
             UTime=request.form['Time']
@@ -497,7 +503,7 @@ def challage_All():
         return render_template("ace/Challage.html",app_name=app_name)
     elif give_App_Name()=="Guess":
         if request.method == "POST":
-            UStart = request.form['Start']
+            UStart = "1"
             UEnd = request.form['End']
             URange = request.form['Range']
             UTime = request.form['Time']
@@ -545,24 +551,25 @@ def challageStart():
         Signs=give_Sign()
         taketime = give_Back_Time()
         howManyQ=int(get_NumberOfQ())+1
+        Qtotal=get_NumberOfQ()
         checkIfCorrect = checkrange()
         whichgame=give_App_Name()
 
         return render_template("ace/CalGameStart.html", total=total, currentQ=currentQ, tomtom=tomtom, Q1=Q1, Q2=Q2,
-                               checkIfCorrect=checkIfCorrect, howManyQ=howManyQ,Signs=Signs,taketime=taketime,whichgame=whichgame)
+                               checkIfCorrect=checkIfCorrect, howManyQ=howManyQ,Signs=Signs,taketime=taketime,whichgame=whichgame,Qtotal=Qtotal)
     elif give_App_Name()=="Guess":
         whichgame = give_App_Name()
         start_challage_guess()
         question = send_guess_num()
         timer = give_back_time_guess()
-        totalQ = int(give_back_range_guess())
-        current_list_now = send_guess_list_amount()
+        totalQ = int(give_back_range_guess())+1
+        current_list_now = send_guess_list_amount()+1
         diff="Challange"
         if request.method == 'POST':
-            count = 0
+            count = 1
             testing_list = []
 
-            for i in range(totalQ):
+            for i in range(1,totalQ):
                 test = request.form[str(count)]
                 testing_list.append(test)
                 count += 1
@@ -578,7 +585,7 @@ def challageStart():
 
                 return redirect(url_for('results'))
 
-            ount = 0
+
             testing_list = []
 
             for i in range(totalQ):

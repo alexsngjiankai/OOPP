@@ -10,32 +10,33 @@
     <br>
 
 {% if App_name=="Cal" %}
-    <p >Calculation Game </p>
+    <h1 >Calculation Game </h1>
          <p>Hard mode</p>
-    <p >Total Qns : 20</p>
-    <p>Total Time to complete all 10 question is : 180s</p>
+    <p >Total Question : 20</p>
+    <p>Total Time to complete all 20 question is : 180 seconds</p>
     <p>Will have addition and subtraction </p>
     <p>Press the start button to start the game</p>
 
 
     <span id="Ace_Startbutton"><a id="Ace_paddingforStartButton" href="{{ url_for('chooseHard') }}">Start</a></span>
       <br>
-    <button id="Ace_HistoryHover"><a id="Ace_Backbutton" href="{{ url_for('goToCalculator') }}">Back</a></button>
 
-
+        <span id="Ace_HistoryHover"><a id="Ace_Backbutton" href="{{ url_for('goToCalculator') }}">Back</a></span>
 {% elif App_name=="Guess" %}
-   <p >Remember the number Game </p>
+   <h1 >Remember the number Game </h1>
          <p>Hard mode</p>
-    <p>Total Qns : 10</p>
-    <p>Total time between each question is : 5s</p>
+    <p>Total Question : 10</p>
+    <p>Total time between each question is : 5 seconds</p>
     <p>Press the start button to start the game</p>
 
 
 
     <span id="Ace_Startbutton"><a id="Ace_paddingforStartButton" href="{{ url_for('chooseHard') }}">Start</a></span>
     <br>
-    <button id="Ace_HistoryHover"><a id="Ace_Backbutton" href="{{ url_for('GotoGuess') }}">Back</a></button>
 
+        <span id="Ace_HistoryHover"><a id="Ace_Backbutton" href="{{ url_for('GotoGuess') }}">Back</a></span>
 {% endif %}
+<br>
+<br>
 </div>
 {% endblock %}

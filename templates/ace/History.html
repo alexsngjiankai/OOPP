@@ -7,9 +7,10 @@
 <br>
 <div class="Ace_History_box">
     <div id="histtory_block_cal">
-    <h1>Calculator History</h1>
+    <br>
+    <h1>Calculation History</h1>
 {% if history_cal!="" %}
-
+    <br>
 
 
       <table id="Ace_table_guess">
@@ -45,15 +46,17 @@
 
 
 {% endif %}
-
+  <br>
+      <hr>
+      <br>
     </div>
 
     <div id="history_block_Guess">
-    <h1>Guess The Number History</h1>
+    <h1>Remember The Number History</h1>
     <!--<ul id="historyOrder">-->
 
 {% if history_Guess!="" %}
-
+    <br>
     <table id="Ace_table_guess">
     <tr>
     {% for i in history_Guess %}
@@ -63,6 +66,7 @@
     {% endfor %}
         </tr>
     <tr>
+
     {% for i in history_Guess %}
     <!--    <li >-->
         <td>
@@ -90,8 +94,9 @@
     </div>
 <br>
 <br>
+    <span id="Ace_HistoryHover"><a id="Ace_Backbutton" href="{{ url_for('goToGameSelection') }}">Back</a></span>
 
-        <button id="Ace_HistoryHover"> <a id="Ace_Backbutton" href="{{ url_for('goToGameSelection') }}">Back</a></button>
+
     <br>
 <br>
     <br>

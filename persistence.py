@@ -27,6 +27,7 @@ class All():
         self.C=""
         self.timer=0
         self.diff=""
+
 def store(E1,E2,diff):
 
     all=All()
@@ -157,7 +158,7 @@ def settingChallage(Start,End,Range,Time):
 def ChallageStartInP():
 
     CQ=temStore['temCha']
-    store(int(CQ.Start),int(CQ.End),"challenge")
+    store(int(CQ.Start),int(CQ.End),"Challenge")
 
     return CQ.Range
 def get_NumberOfQ():
@@ -253,6 +254,7 @@ class guess_Number:
         self.User_answer=0
         self.diff=""
         self.correction=""
+        self.number=0
 
 def generate_Guess(start,end,diff):
 
@@ -279,14 +281,20 @@ def send_guess_list_amount():
 
 def store_answer(answer):
     count=0
+    print(answer)
+    print(len(storeE1))
+
     del storeE1[str(len(answer)+1)]
     del storeE1[str(len(answer))]
     for i in storeE1:
+        print(count)
         value=storeE1[i]
         if value.User_answer == 0:
             while True:
-                if answer[count].startswith("0"):
+                answeralone=answer[count]
+                if answeralone.startswith("0"):
                     print("test1")
+
                     print(answer[count])
                     answer[count] = answer[count][1:]
                 else:
@@ -299,6 +307,8 @@ def store_answer(answer):
                 value.correction="Correct"
             else:
                 value.correction="Incorrect"
+
+
             storeE1[i]=value
         count+=1
     #Past work
@@ -313,6 +323,7 @@ def store_answer(answer):
 
 def storeGuessHistory(id):
     exist = False
+
     for i in History_All_Game:
         if i == id:
             All_History = History_All_Game[i]  # take first dict value

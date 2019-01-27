@@ -15,11 +15,12 @@
                 <ul>
                     {% for i in list_med %}
                     <li>
-                        <p>Medication Name:{{ i["med_name"] }}</p>
+                        <p class="tablecell"><b>Name Of Medicine:</b>{{ i["med_name"] }}</p>
 
-                        <p>Consume:{{ i["amount"] }}</p>
+                        <p class="tablecell"><b>Amount Of Consumption:</b>{{ i["amount"] }}</p>
 
-                        <p>Information:{{ i["description"] }}</p>
+                        <p class="tablecell"><b>Description:</b>{{ i["description"] }}</p>
+
                     <hr>
                     </li>
 

@@ -58,6 +58,7 @@ def scheme():
 def home():
     return render_template('homepage.html')
 
+
 @app.route("/profile")
 def profile():
     username = session['user_name']
@@ -68,7 +69,6 @@ def profile():
     hospital = session['hospital']
     return render_template('profile.html', username=username, name=name, age=age, contactnumber=contactnumber,
                            doctor=doctor, hospital=hospital)
-
 
 
 @app.route("/contacthelp")
@@ -82,33 +82,6 @@ def contacthelp():
     return render_template('contacthelp.html', hospitalcontact=hospitalcontact, doctorcontact=doctorcontact)
 
 
-@app.route('/signup')
-def signup():
-    return render_template('signup.html')
-
-
-
-
-@app.route("/medselection", methods=('GET','POST'))
-def medselection():
-    if request.method == 'POST':
-        user=session["user_name"]
-        name = str(request.form['medname'])
-        amount = str(request.form['medamount'])
-        description = str(request.form['MedDescription'])
-        add_medinfo(user, name, amount, description)
-        return redirect(url_for("medList"))
-    return render_template("medselection.html")
-
-@app.route('/medList')
-def medList():
-    user=session["user_name"]
-    list_med=return_list_med(user)
-    return render_template('medList.html', list_med=list_med)
-
-
-
-
 @app.route('/tester')
 def login_required(view):
     @functools.wraps(view)
@@ -118,16 +91,18 @@ def login_required(view):
         return view(**kwargs)
     return wrapped_view
 
+
 @app.route('/init')
 def init():
     init_db()
     return 'db initialised'
 
+
 @app.route('/')
 def index():
     if 'id' in session:
         posts = get_blogs()
-        return render_template('homepage.html')#this is homepage Ace put a temperory one
+        return render_template('homepage.html')
     else:
         return render_template('login.html')
 
@@ -158,6 +133,7 @@ def login():
                 return redirect(url_for('index'))
         flash(error)
     return render_template('login.html')
+
 
 @app.route('/register', methods=('GET', 'POST'))
 def register():
@@ -192,6 +168,7 @@ def register():
         flash(error)
     return render_template('register.html')
 
+
 @app.route('/<string:id>/update', methods=('GET', 'POST'))
 def update(id):
     post = get_blog(id)
@@ -214,11 +191,13 @@ def update(id):
 
     return render_template('update.html', post=post)
 
+
 @app.route('/<string:id>/delete', methods=('GET', 'POST'))
 def delete(id):
     delete_blog(id)
     posts = get_blogs()
     return render_template('index.html', posts=posts)
+
 
 @app.route('/create', methods=('GET', 'POST'))
 def create():
@@ -238,10 +217,31 @@ def create():
 
     return render_template('create.html')
 
+
 @app.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('index'))
+
+
+@app.route("/medselection", methods=('GET','POST'))
+def medselection():
+    if request.method == 'POST':
+        user=session["user_name"]
+        name = str(request.form['medname'])
+        amount = str(request.form['medamount'])
+        description = str(request.form['MedDescription'])
+        add_medinfo(user, name, amount, description)
+        return redirect(url_for("medList"))
+    return render_template("medselection.html")
+
+
+@app.route('/medList')
+def medList():
+    user=session["user_name"]
+    list_med=return_list_med(user)
+    return render_template('medList.html', list_med=list_med)
+
 
 @app.route('/gameSelection')
 def goToGameSelection():#step1

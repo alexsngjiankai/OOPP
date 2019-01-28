@@ -226,7 +226,7 @@ Ace started
 }
 
 #Ace_headTitle{
-    color:red;
+    color:black;
     font-size:35px;
 }
 
@@ -538,9 +538,6 @@ margin-left: 88%;
 }
 
 
-#Ace_Button_To_left{
-    margin-left:75%;
-}
 
 #Ace_Button_To_left:hover{
     background-color:lightgray;

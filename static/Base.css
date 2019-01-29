@@ -212,7 +212,7 @@ Ace started
 }
 
 #Ace_headTitle{
-    color:red;
+    color:black;
     font-size:35px;
 }
 
@@ -522,7 +522,6 @@ padding-right:10px;
 margin-left: 88%;
 
 }
-
 
 #Ace_Button_To_left{
     margin-left:75%;

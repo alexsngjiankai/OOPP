@@ -1,0 +1,41 @@
+
+<!doctype html>
+<title>{% block title %}{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='Base.css') }}">
+<nav>
+    {% if session['id'] %}
+
+        <span class="logo"><img src='/static/Trooster.png' alt='WebPage Logo' style="width:150px; height:70px;" /></span>
+        <ul id="base_ul">
+        <li><a class='link' href="{{ url_for('home') }}">主页</a></li>
+        <li><a class='link' href="{{ url_for('scheme') }}">方案</a></li>
+        <li><a class='link' href="{{ url_for('appointmentstorage') }}">约定</a></li>
+        <li><a class='link' href="{{ url_for('appointment') }}">预约</a></li>
+        <li><a class='link' href="{{ url_for('medselection') }}">药物治疗</a></li>
+        <li><a class='link' href="{{ url_for('medList') }}">药物清单</a></li>
+        <li><a class='link' href="{{ url_for('goToGameSelection') }}">游戏</a></li>
+        <li><a class='link' href="{{ url_for('contacthelp') }}">联系和帮助</a></li>
+        <li><a class='link' href="{{ url_for('profile') }}">资料和设置</a></li>
+        <li><a class='link' href="{{ url_for('logout') }}">登出</a></li>
+
+        </ul>
+
+        <span id="ID_name">ID : {{ session['user_name'] }} </span>
+
+    {% else %}
+
+     <ul id="base_ul">
+      <li><a href="{{ url_for('register') }}">Register</a>
+      <li><a href="{{ url_for('login') }}">Log In</a>
+          </ul>
+    {% endif %}
+
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+
+  {% block content %}{% endblock %}
+
+</section>

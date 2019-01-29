@@ -4,7 +4,7 @@ from persistence import *
 import functools
 from persistenceJA import *
 from alexpersistance import *
-from medication import *
+#from medication import *
 #from datetime import datetime
 #rr
 #test

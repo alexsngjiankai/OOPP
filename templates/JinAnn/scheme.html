@@ -2,23 +2,78 @@
 {% extends 'JinAnn/Base.html' %}
 <h1>{% block title %}ChllengeStart{% endblock %}</h1>
 {% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+  $("#ida").click(function(){
+    $("#id").slideToggle();
+  });
+});
+
+$(document).ready(function(){
+  $("#idb").click(function(){
+    $("#id2").slideToggle();
+  });
+});
+
+$(document).ready(function(){
+  $("#idc").click(function(){
+    $("#id3").slideToggle();
+  });
+});
+
+$(document).ready(function(){
+  $("#idd").click(function(){
+    $("#id4").slideToggle();
+  });
+});
+
+</script>
+
 
     <h3> Schemes available/You are benefiting from</h3>
+
+
         <button> <a
             href = ' {{ url_for('schemeform') }}'>   FILTER TEST</a>
-
         </button>
 
-        <div>
+        <div role="button" id="ida">
             <h2> Scheme 1</h2>
         </div>
 
         <div>
+            <h3 class='hideja'  id ='id' >Content for Scheme 1</h3>
+        </div>
+
+
+
+
+        <div role="button" id="idb">
             <h2> Scheme 2</h2>
         </div>
 
         <div>
+            <h3 class='hideja' id='id2' >Content for Scheme 2</h3>
+        </div>
+
+
+
+        <div role="button" id="idc">
             <h2> Scheme 3</h2>
         </div>
 
+        <div>
+            <h3 class='hideja' id='id3' >Content for Scheme 3</h3>
+        </div>
+
+
+    <div role="button" id="idd">
+            <h2> Scheme 4</h2>
+        </div>
+
+        <div>
+            <h3 class='hideja' id='id4' >Content for Scheme 4</h3>
+        </div>
 {% endblock %}

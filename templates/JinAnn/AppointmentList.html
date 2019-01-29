@@ -1,18 +1,20 @@
 {% extends 'JinAnn/Base.html' %}
 
 {% block content %}
+<h1> Current Appointments </h1>
+    <table id="jinanntable" >
 {% for post in posts %}
+    <tr><td>
 
-        <div>
+    <div>
           <h1>Date: {{ post['date'] }}</h1>
             <br>
-          <div class="about">location: {{ post['location'] }} on {{ post['timehour'] }}</div>
+          <div class="about">location: {{ post['location'] }} <br> Time {{ post['timehour'] }}</div>
           <div > {{ post['reason'] }}</div>
         </div>
+   </td></tr>
 
-    {% if not loop.last %}
-      <hr>
-    {% endif %}
   {% endfor %}
+    </table>
 
 {% endblock %}

@@ -3,8 +3,8 @@
 {% block content %}
 
 
-       <div class="form">
-           <form method = 'post'>
+       <div >
+           <form id="schemeform" method = 'post'>
                <label for="age">Age</label>
                  <input type='number' name="age" id="age" value =' {{request.form["age"]}} ' required>
                <label for="income">Monthly Income</label>
@@ -15,10 +15,26 @@
 
        </div>
 
-{% if age >= 50 %}
-    <div> Scheme 1</div>
+{%  if age > 0   %}
+    <div>
+        <h2> Scheme 0 </h2>
+    </div>
+
     {%  endif %}
+
+{% if age >= 50 %}
+
+    <div>
+        <h2> Scheme 1 </h2>
+    </div>
+
+    {%  endif %}
+
 {% if age >= 50 and income <= 2000 %}
-    <div> Scheme 2</div>
+
+    <div>
+        <h2> Scheme 2 </h2>
+    </div>
+
     {%  endif %}
 {% endblock %}

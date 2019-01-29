@@ -15,15 +15,15 @@
 <form id = "Alex_medform" method="post" action="/medselection">
 
   <label for="medname">Name Of Medicine:</label>
-  <input type="text" id="medname" name="medname" placeholder="Enter Name of Prescription"><br><div id="emptyspace3"></div>
+  <input type="text" id="medname" class="Alex_input" name="medname" required placeholder="Enter Name of Prescription"><br><div id="emptyspace3"></div>
 
   <label for="medamount">Amount Of Consumption:</label>
-  <input type="text" id="medamount" name="medamount" placeholder="Enter the amount of tablet(e.g. 400ml/2tablets)"><br><div id="emptyspace3"></div>
+  <input type="text" id="medamount" class="Alex_input" name="medamount" required placeholder="Enter the amount of tablet(e.g. 400ml/2tablets)"><br><div id="emptyspace3"></div>
 
   <label for="MedDescription">Description:</label>
-  <input type="text" id="MedDescription" name="MedDescription" placeholder="Enter medicine description(e.g. After meals, 2times a day, may cause cause drowsiness)"><br><div id="emptyspace3"></div>
+  <input type="text" id="MedDescription" class="Alex_input" name="MedDescription" required placeholder="Enter medicine description(e.g. After meals, 2times a day, may cause cause drowsiness.)"><br><div id="emptyspace3"></div>
 
-    <input type="submit" value="Submit">
+    <input type="submit" id="Alex_submitButton" value="Submit">
 
 </form>
 

@@ -59,6 +59,11 @@ def home():
     return render_template('homepage.html')
 
 
+@app.route('/homechi')
+def homechi():
+    return render_template('homepagechi.html')
+
+
 @app.route("/profile")
 def profile():
     username = session['user_name']
@@ -67,19 +72,19 @@ def profile():
     contactnumber = session['contactnumber']
     doctor = session['doctor']
     hospital = session['hospital']
-    return render_template('profile.html', username=username, name=name, age=age, contactnumber=contactnumber,
-                           doctor=doctor, hospital=hospital)
+    language = session['language']
+    return render_template('profile.html', username=username, name=name, age=age, contactnumber=contactnumber, doctor=doctor, hospital=hospital, language=language)
 
 
 @app.route("/contacthelp")
 def contacthelp():
-    hospital=session['hospital']
+    hospital = session['hospital']
     doctor = session['doctor']
 
-    hospitalcontact=check_hosipital(hospital)
-    doctorcontact=check_doctor(doctor)
+    hospitalcontact = check_hosipital(hospital)
+    doctorcontact = check_doctor(doctor)
 
-    return render_template('contacthelp.html', hospitalcontact=hospitalcontact, doctorcontact=doctorcontact)
+    return render_template('contacthelp.html', hospitalcontact=hospitalcontact, doctorcontact=doctorcontact, hospital=hospital, doctor=doctor)
 
 
 @app.route('/tester')
@@ -101,8 +106,12 @@ def init():
 @app.route('/')
 def index():
     if 'id' in session:
-        posts = get_blogs()
-        return render_template('homepage.html')
+        if session['language'] == 'English':
+            posts = get_blogs()
+            return render_template('homepage.html')
+        elif session['language'] == 'Chinese':
+            posts = get_blogs()
+            return render_template('homepagechi.html')
     else:
         return render_template('login.html')
 
@@ -130,6 +139,7 @@ def login():
                 session['doctor'] = user.get_doctor()
                 session['hospital'] = user.get_hospital()
                 session['firstvisit'] = user.get_firstvisit()
+                session['language'] = user.get_language()
                 return redirect(url_for('index'))
         flash(error)
     return render_template('login.html')
@@ -145,6 +155,7 @@ def register():
         contactnumber = request.form['contactnumber']
         doctor = request.form['doctor']
         hospital = request.form['hospital']
+        language = request.form['language']
         firstvisit = 0
 
         error = None
@@ -162,8 +173,10 @@ def register():
             error = 'Doctor name is required.'
         elif not hospital:
             error = 'Hospital name is required.'
+        elif not language:
+            error = 'Language is required'
         else:
-            create_user(username, password, name, age, contactnumber, doctor, hospital, firstvisit,language="")
+            create_user(username, password, name, age, contactnumber, doctor, hospital, firstvisit, language)
             return redirect(url_for('login'))
         flash(error)
     return render_template('register.html')

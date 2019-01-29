@@ -1,25 +1,107 @@
-{% extends 'base1.html' %}
-
-{% block header %}
-  <h1>{% block title %}Register{% endblock %}</h1>
-{% endblock %}
-
+{% extends 'JinAnn/Base.html' %}
+<h1>{% block title %}Register{% endblock %}</h1>
 {% block content %}
+
+
+    <style>
+    h1 { font-family: serif; color: #377ba8; margin: 1rem 0; }
+    form { max-width: 960px; margin: 0 auto; background: white; }
+    .content:last-child { margin-bottom: 0; }
+.content form {display: flex; flex-direction: column; }
+.content label { font-weight: bold; margin-bottom: 0.5em; }
+.content input, .content textarea { margin-bottom: 1em; }
+.content textarea { min-height: 12em; resize: vertical; }
+#centre {  display: block;}
+    .dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+    </style>
+    <div id="centre">
   <form method="post">
+      <h1>Register</h1>
     <label for="username">Username</label>
     <input name="username" id="username" required>
     <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
+    <input type="password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" oninvalid="this.setCustomValidity('Must contain 8 or more characters, at least one number, one uppercase and lowercase letter')"
+    oninput="this.setCustomValidity('')" required>
     <label for="name">Name</label>
-    <input type="name" name="name" id="name" required>
-    <label for="age">Age</label>
-    <input type="age" name="age" id="age" required>
+    <input type="text" name="name" id="name"  oninvalid="this.setCustomValidity('Letters only')"
+    oninput="this.setCustomValidity('')" required>
+    <label for='age'>Age (Between 60 and 100)</label>
+    <input type="number" name="age" id="age" min="60" max="100" required>
     <label for="contactnumber">Contact number</label>
-    <input type="contactnumber" name="contactnumber" id="contactnumber" required>
-    <label for="doctor">Doctor</label>
-    <input type="doctor" name="doctor" id="doctor" required>
+    <input name="contactnumber" id="contactnumber" pattern="^[8-9]{1}[0-9]{7}" required>
+    <label for="Doctor">Doctor</label>
+    <input type="radio" id="doctor" name="doctor" value="Dr Tan">Dr Tan<br>
+    <input type="radio" id="doctor" name="doctor" value="Dr Lim">Dr Lim
     <label for="hospital">Hospital</label>
-    <input type="hospital" name="hospital" id="hospital" required>
+    <input type="radio" id="hospital" name="hospital" value="Khoo Teck Puat">Khoo Teck Puat<br>
+    <input type="radio" id="hospital" name="hospital" value="Tan Tock Seng">Tan Tock Seng
+    <label for="language">Language</label>
+    <input type="radio" id="language" name="language" value="English">English<br>
+    <input type="radio" id="language" name="language" value="Chinese">Chinese
     <input type="submit" value="Register">
   </form>
+    </div>
+    <script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+function doctorfunc() {
+  var x = document.getElementById("doctor").value;
+  document.getElementById("doctor").innerHTML = x;
+}
+</script>
 {% endblock %}

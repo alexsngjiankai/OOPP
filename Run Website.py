@@ -12,6 +12,7 @@ app = Flask(__name__)
 app.config.from_mapping(
     SECRET_KEY='dev'
 )
+#er
 #tt
 @app.route('/schemeform',  methods=('GET', 'POST'))
 def schemeform():
